@@ -36,6 +36,7 @@ class HomeVC: UIViewController {
     
     func configurePostButton() {
         view.addSubview(postButton)
+        postButton.addTarget(self, action: #selector(pushLoginVC), for: .touchUpInside)
         
         let padding: CGFloat = 20
         
@@ -45,6 +46,15 @@ class HomeVC: UIViewController {
             postButton.widthAnchor.constraint(equalToConstant: 77),
             postButton.heightAnchor.constraint(equalToConstant: 77)
         ])
+    }
+    
+    
+    @objc func pushLoginVC() {
+        
+        //モーダルでの画面遷移、遷移先は全画面に変更
+        let loginVC = LoginVC()
+        loginVC.modalPresentationStyle = .fullScreen
+        self.present(loginVC, animated: true, completion: nil)
     }
 }
 
