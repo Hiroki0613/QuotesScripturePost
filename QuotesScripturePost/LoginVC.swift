@@ -11,10 +11,12 @@ import UIKit
 class LoginVC: UIViewController {
     
     let backgroundView = UIImageView()
+    let loginButton = QSButton(view: self, x: 100, y: 100, title: "にほんご")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureBackgroundView()
+        view.addSubview(loginButton)
     }
     
     func configureBackgroundView() {
