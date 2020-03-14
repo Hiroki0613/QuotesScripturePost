@@ -23,16 +23,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.makeKeyAndVisible()
     }
     
-    
+    func createHomeVC() -> UIViewController {
+        let homeVC = HomeVC()
+        homeVC.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "house"), tag: 0)
+        
+        return homeVC
+    }
     
     
     
     func createTabbar() -> UITabBarController {
         //tabarをインスタンス化
         let tabbar = UITabBarController()
+        
 
         //tabbarにつけるViewControllerを実装
-        tabbar.viewControllers = [HomeVC(), BellVC(), EditVC()]
+        tabbar.viewControllers = [createHomeVC(), BellVC(), EditVC()]
         
         return tabbar
     }
