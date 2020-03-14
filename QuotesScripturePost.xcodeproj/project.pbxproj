@@ -17,6 +17,7 @@
 		7F463646241CCAB000F50EE2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F463645241CCAB000F50EE2 /* Constants.swift */; };
 		7F463648241CDBF900F50EE2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7F463647241CDBF900F50EE2 /* GoogleService-Info.plist */; };
 		7F46364A241CE41200F50EE2 /* HomePostTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F463649241CE41200F50EE2 /* HomePostTableCell.swift */; };
+		7F46364C241CFF6800F50EE2 /* PostButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F46364B241CFF6800F50EE2 /* PostButton.swift */; };
 		B641A168C296076A2DA5CF89 /* Pods_QuotesScripturePost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BCB7B118E87F3D733C214D9 /* Pods_QuotesScripturePost.framework */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +35,7 @@
 		7F463645241CCAB000F50EE2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		7F463647241CDBF900F50EE2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7F463649241CE41200F50EE2 /* HomePostTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePostTableCell.swift; sourceTree = "<group>"; };
+		7F46364B241CFF6800F50EE2 /* PostButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostButton.swift; sourceTree = "<group>"; };
 		82AD43EAB3AF2C9FFDD1364C /* Pods-QuotesScripturePost.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuotesScripturePost.release.xcconfig"; path = "Target Support Files/Pods-QuotesScripturePost/Pods-QuotesScripturePost.release.xcconfig"; sourceTree = "<group>"; };
 		E0BA0FA24CEA1865B7218A38 /* Pods-QuotesScripturePost.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuotesScripturePost.debug.xcconfig"; path = "Target Support Files/Pods-QuotesScripturePost/Pods-QuotesScripturePost.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -73,6 +75,7 @@
 			children = (
 				7F46362D241CB81600F50EE2 /* AppDelegate.swift */,
 				7F46362F241CB81600F50EE2 /* SceneDelegate.swift */,
+				7F46364B241CFF6800F50EE2 /* PostButton.swift */,
 				7F463631241CB81600F50EE2 /* HomeVC.swift */,
 				7F463649241CE41200F50EE2 /* HomePostTableCell.swift */,
 				7F463641241CC10000F50EE2 /* BellVC.swift */,
@@ -241,6 +244,7 @@
 				7F463632241CB81600F50EE2 /* HomeVC.swift in Sources */,
 				7F463642241CC10000F50EE2 /* BellVC.swift in Sources */,
 				7F46362E241CB81600F50EE2 /* AppDelegate.swift in Sources */,
+				7F46364C241CFF6800F50EE2 /* PostButton.swift in Sources */,
 				7F463630241CB81600F50EE2 /* SceneDelegate.swift in Sources */,
 				7F463646241CCAB000F50EE2 /* Constants.swift in Sources */,
 			);

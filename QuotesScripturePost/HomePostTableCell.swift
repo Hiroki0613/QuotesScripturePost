@@ -85,7 +85,11 @@ class HomePostTableCell: UITableViewCell {
 //        shareButton.translatesAutoresizingMaskIntoConstraints = false
         commentLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        let padding:CGFloat = 20
+        userNameLabel.textAlignment = .left
+        postDateLabel.textAlignment = .right
+        
+        
+        let padding:CGFloat = 10
         
         NSLayoutConstraint.activate([
             //Userのイメージ画像のcell定義
@@ -95,16 +99,16 @@ class HomePostTableCell: UITableViewCell {
             userImage.widthAnchor.constraint(equalToConstant: 40),
             
             //Userの名前のcell定義
-            userNameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: padding),
+            userNameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: padding + 10),
             userNameLabel.leadingAnchor.constraint(equalTo: userImage.trailingAnchor, constant: 10),
             userNameLabel.heightAnchor.constraint(equalToConstant: 20),
             userNameLabel.widthAnchor.constraint(equalToConstant: 100),
             
             //Userの投稿日時を定義
-            postDateLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: padding),
+            postDateLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: padding + 10),
             postDateLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -padding),
             postDateLabel.heightAnchor.constraint(equalToConstant: 20),
-            postDateLabel.widthAnchor.constraint(equalToConstant: 100),
+            postDateLabel.widthAnchor.constraint(equalToConstant: 200),
             
             //投稿画像を定義
             postImage.topAnchor.constraint(equalTo: userImage.bottomAnchor, constant: 10),

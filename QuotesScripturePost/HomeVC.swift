@@ -11,17 +11,16 @@ import UIKit
 class HomeVC: UIViewController {
 
     let homeTableView = UITableView()
+    let postButton = PostButton()
     
-
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        view.backgroundColor = .systemBlue
         configureTableView()
-        
+        configurePostButton()
     }
-
+    
     
     func configureTableView() {
         view.backgroundColor = .systemBackground
@@ -33,7 +32,20 @@ class HomeVC: UIViewController {
         
         homeTableView.register(HomePostTableCell.self, forCellReuseIdentifier: HomePostTableCell.reuseID)
     }
-
+    
+    
+    func configurePostButton() {
+        view.addSubview(postButton)
+        
+        let padding: CGFloat = 20
+        
+        NSLayoutConstraint.activate([
+            postButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            postButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -view.frame.height/8),
+            postButton.widthAnchor.constraint(equalToConstant: 77),
+            postButton.heightAnchor.constraint(equalToConstant: 77)
+        ])
+    }
 }
 
 
