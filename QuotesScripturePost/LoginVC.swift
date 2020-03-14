@@ -9,13 +9,27 @@
 import UIKit
 
 class LoginVC: UIViewController {
-
+    
+    let backgroundView = UIImageView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        view.backgroundColor = .systemGreen
+        configureBackgroundView()
     }
     
+    func configureBackgroundView() {
+        view.addSubview(backgroundView)
+        backgroundView.translatesAutoresizingMaskIntoConstraints = false
+        self.backgroundView.contentMode = .scaleAspectFill
+        backgroundView.image = UIImage(named: "sakura")
+        
+        NSLayoutConstraint.activate([
+            backgroundView.topAnchor.constraint(equalTo: view.topAnchor),
+            backgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            backgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            backgroundView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+    }
 
 
 }
