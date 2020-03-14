@@ -31,6 +31,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     
+    func createBellVC() -> UIViewController {
+        let bellVC = BellVC()
+        bellVC.tabBarItem = UITabBarItem(title: "Bell", image: UIImage(systemName: "bell"), tag: 1)
+        
+        return bellVC
+    }
+    
+    
+    func createEditVC() -> UIViewController {
+        let eidtVC = EditVC()
+        eidtVC.tabBarItem = UITabBarItem(title: "Edit", image: UIImage(systemName: "gear"), tag: 0)
+        
+        return eidtVC
+    }
+    
+    
     
     func createTabbar() -> UITabBarController {
         //tabarをインスタンス化
@@ -38,7 +54,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
 
         //tabbarにつけるViewControllerを実装
-        tabbar.viewControllers = [createHomeVC(), BellVC(), EditVC()]
+        tabbar.viewControllers = [createHomeVC(), createBellVC(), createEditVC()]
         
         return tabbar
     }
