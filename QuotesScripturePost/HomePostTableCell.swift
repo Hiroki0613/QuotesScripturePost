@@ -23,6 +23,14 @@ class HomePostTableCell: UITableViewCell {
     let userNameLabel = UILabel()
     let postDateLabel = UILabel()
     let postImage = UIImageView()
+    
+    //ここは後日,UiStackViewで実装？
+    let heartButton = UIButton()
+    let heartNumber = UILabel()
+    let commentButton = UIButton()
+    let commentNumber = UILabel()
+    
+//    let shareButton = UIButton()
     let commentLabel = UILabel()
     
     
@@ -42,9 +50,14 @@ class HomePostTableCell: UITableViewCell {
     func set(indexPath: IndexPath){
         userImage.image = UIImage(named: imageArray[indexPath.row])
         userNameLabel.text = nameArray[indexPath.row]
-//        postDateLabel.text = dateArray[indexPath.row]
-//        postImage.image = UIImage(named: postImageArray[indexPath.row])
-//        commentLabel.text = commentArray[indexPath.row]
+        postDateLabel.text = dateArray[indexPath.row]
+        postImage.image = UIImage(named: postImageArray[indexPath.row])
+        heartButton.setImage(UIImage(systemName: SFSymbols.heart), for: .normal)
+        heartNumber.text = "100"
+        commentButton.setImage(UIImage(systemName: SFSymbols.comment), for: .normal)
+        commentNumber.text = "500"
+//        shareButton.setImage(UIImage(systemName: SFSymbols.share), for: .normal)
+        commentLabel.text = commentArray[indexPath.row]
         
     }
     
@@ -54,20 +67,23 @@ class HomePostTableCell: UITableViewCell {
         addSubview(userNameLabel)
         addSubview(postDateLabel)
         addSubview(postImage)
+        addSubview(heartButton)
+        addSubview(heartNumber)
+        addSubview(commentButton)
+        addSubview(commentNumber)
+//        addSubview(shareButton)
         addSubview(commentLabel)
         
         userImage.translatesAutoresizingMaskIntoConstraints = false
         userNameLabel.translatesAutoresizingMaskIntoConstraints = false
         postDateLabel.translatesAutoresizingMaskIntoConstraints = false
         postImage.translatesAutoresizingMaskIntoConstraints = false
+        heartButton.translatesAutoresizingMaskIntoConstraints = false
+        heartNumber.translatesAutoresizingMaskIntoConstraints = false
+        commentButton.translatesAutoresizingMaskIntoConstraints = false
+        commentNumber.translatesAutoresizingMaskIntoConstraints = false
+//        shareButton.translatesAutoresizingMaskIntoConstraints = false
         commentLabel.translatesAutoresizingMaskIntoConstraints = false
-        
-        userImage.backgroundColor = .systemPink
-        userNameLabel.backgroundColor = .systemBlue
-        postDateLabel.backgroundColor = .systemGray
-        postImage.backgroundColor = .systemOrange
-        commentLabel.backgroundColor = .systemPurple
-        
         
         let padding:CGFloat = 20
         
@@ -97,8 +113,36 @@ class HomePostTableCell: UITableViewCell {
             postImage.heightAnchor.constraint(equalToConstant: self.bounds.width),
             postImage.widthAnchor.constraint(equalToConstant: self.bounds.width),
             
+            //ハートボタンを定義
+            heartButton.topAnchor.constraint(equalTo: postImage.bottomAnchor, constant: 10),
+            heartButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: padding),
+            heartButton.heightAnchor.constraint(equalToConstant: 20),
+            heartButton.widthAnchor.constraint(equalToConstant: 20),
+            
+            //ハートの数を定義
+            heartNumber.topAnchor.constraint(equalTo: postImage.bottomAnchor, constant: 10),
+            heartNumber.leadingAnchor.constraint(equalTo: heartButton.trailingAnchor, constant: 5),
+            heartNumber.heightAnchor.constraint(equalToConstant: 20),
+            heartNumber.widthAnchor.constraint(equalToConstant: 40),
+            
+            //コメントボタンを定義
+            commentButton.topAnchor.constraint(equalTo: postImage.bottomAnchor, constant: 10),
+            commentButton.leadingAnchor.constraint(equalTo: heartNumber.trailingAnchor, constant: 10),
+            commentButton.heightAnchor.constraint(equalToConstant: 20),
+            commentButton.widthAnchor.constraint(equalToConstant: 20),
+            
+            //コメント数を定義
+            commentNumber.topAnchor.constraint(equalTo: postImage.bottomAnchor, constant: 10),
+            commentNumber.leadingAnchor.constraint(equalTo: commentButton.trailingAnchor, constant: 5),
+            commentNumber.heightAnchor.constraint(equalToConstant: 20),
+            commentNumber.widthAnchor.constraint(equalToConstant: 40),
+            
+            //シェアボタンを定義(こちらは後日、実装予定)
+            
+
+            
             //commentLabelを定義
-            commentLabel.topAnchor.constraint(equalTo: postImage.bottomAnchor, constant: padding),
+            commentLabel.topAnchor.constraint(equalTo: heartButton.bottomAnchor, constant: padding),
             commentLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: padding),
             commentLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -padding),
             commentLabel.heightAnchor.constraint(equalToConstant: 30)

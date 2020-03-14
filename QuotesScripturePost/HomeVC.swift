@@ -27,7 +27,7 @@ class HomeVC: UIViewController {
         view.backgroundColor = .systemBackground
         view.addSubview(homeTableView)
         homeTableView.frame = view.bounds
-        homeTableView.rowHeight = 450
+        homeTableView.rowHeight = 500
         homeTableView.delegate = self
         homeTableView.dataSource = self
         

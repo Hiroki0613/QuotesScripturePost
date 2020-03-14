@@ -12,4 +12,7 @@ enum SFSymbols {
     static let home = "house"
     static let bell = "bell"
     static let edit = "gear"
+    static let heart = "heart.fill"
+    static let comment = "text.bubble.fill"
+    static let share = "square.and.arrow.up.fill"
 }
