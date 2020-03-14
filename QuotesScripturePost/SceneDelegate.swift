@@ -25,7 +25,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func createHomeVC() -> UIViewController {
         let homeVC = HomeVC()
-        homeVC.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "house"), tag: 0)
+        homeVC.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: SFSymbols.home), tag: 0)
         
         return homeVC
     }
@@ -33,7 +33,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func createBellVC() -> UIViewController {
         let bellVC = BellVC()
-        bellVC.tabBarItem = UITabBarItem(title: "Bell", image: UIImage(systemName: "bell"), tag: 1)
+        bellVC.tabBarItem = UITabBarItem(title: SFSymbols.bell, image: UIImage(systemName: "bell"), tag: 1)
         
         return bellVC
     }
@@ -41,7 +41,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func createEditVC() -> UIViewController {
         let eidtVC = EditVC()
-        eidtVC.tabBarItem = UITabBarItem(title: "Edit", image: UIImage(systemName: "gear"), tag: 0)
+        eidtVC.tabBarItem = UITabBarItem(title: SFSymbols.edit, image: UIImage(systemName: "gear"), tag: 0)
         
         return eidtVC
     }
