@@ -13,7 +13,6 @@ target 'QuotesScripturePost' do
   pod 'Firebase/Storage'
   pod 'PKHUD'
   pod 'lottie-ios'
-  pod ‘SDWebImage’
-  pod 'MessageKit'
+  pod 'SDWebImage', '~> 5.0'
 
 end
