@@ -10,12 +10,47 @@ import UIKit
 
 class HomeVC: UIViewController {
 
+    let homeTableView = UITableView()
+    
+
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .systemPink
+        configureTableView()
+        
     }
 
+    
+    func configureTableView() {
+        view.backgroundColor = .systemBackground
+        view.addSubview(homeTableView)
+        homeTableView.frame = view.bounds
+        homeTableView.rowHeight = 450
+        homeTableView.delegate = self
+        homeTableView.dataSource = self
+        
+        homeTableView.register(HomePostTableCell.self, forCellReuseIdentifier: HomePostTableCell.reuseID)
+    }
 
+}
+
+
+extension HomeVC: UITableViewDelegate,UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: HomePostTableCell.reuseID, for: indexPath) as! HomePostTableCell
+        
+        cell.set(indexPath: indexPath)
+        
+        return cell
+    }
 }
 
