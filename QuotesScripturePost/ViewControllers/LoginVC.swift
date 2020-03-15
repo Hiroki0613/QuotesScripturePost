@@ -56,7 +56,11 @@ class LoginVC: UIViewController {
         
         //ログイン(すでにログインしている場合は、この動作をパス)
         
-        //投稿画面に遷移
+        //モーダルで投稿画面に遷移、遷移先は全画面に変更
+        let selectPostImageVC = SelectPostImageVC()
+        selectPostImageVC.modalPresentationStyle = .fullScreen
+        self.present(selectPostImageVC, animated: true, completion: nil)
+        
         
     }
     

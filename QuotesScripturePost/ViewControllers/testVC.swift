@@ -1,5 +1,5 @@
 //
-//  SelectPostImageVC.swift
+//  testVC.swift
 //  QuotesScripturePost
 //
 //  Created by 近藤宏輝 on 2020/03/15.
@@ -8,34 +8,38 @@
 
 import UIKit
 
-class SelectPostImageVC: UIViewController {
-    
-    let toolbar = UIToolbar ()
-    
+class testVC: UIViewController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         view.backgroundColor = .systemBlue
-        configureToolbar()
-        
-        
-        
+        configureToolBar()
     }
     
-    func configureToolbar() {
-        self.view.addSubview(toolbar)
-        toolbar.barStyle = .black
-        toolbar.translatesAutoresizingMaskIntoConstraints = false
+    
+    func configureToolBar() {
         
-        //戻るボタンの実装
-        let backButton = UIButton(frame: CGRect(x: 0, y:0, width: 100, height: 100))
+        // ツールバーの高さ
+        let footerBarHeight: CGFloat = 100
+        
+        // ツールバーのインスタンス化
+        let toolbar = UIToolbar(frame: CGRect(
+            x: 0,
+            y: self.view.bounds.size.height - footerBarHeight,
+            width: self.view.bounds.size.width,
+            height: footerBarHeight)
+        )
+        
+        toolbar.barStyle = .black
+        
+        //ツールバーで使うボタンの定義
+        let backButton = UIButton(frame: CGRect(x: 0, y:0, width: 100, height: 40))
         backButton.setTitle("Back", for: .normal)
         backButton.addTarget(self, action: #selector(back), for: .touchUpInside)
         let backButtonItem = UIBarButtonItem(customView: backButton)
         
         //ボタンを左右に分けるためのスペースの実装
         let flexibleItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        
         
         //進むボタンの実装
         let nextButton = UIButton(frame: CGRect(x: 0, y:0, width: 100, height: 100))
@@ -47,28 +51,17 @@ class SelectPostImageVC: UIViewController {
         toolbar.items = [backButtonItem,flexibleItem,nextButtonItem]
         
         self.view.addSubview(toolbar)
-        
-        NSLayoutConstraint.activate([
-            toolbar.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            toolbar.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            toolbar.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            toolbar.heightAnchor.constraint(equalToConstant: 50)
-        ])
-        
-    
     }
     
-      // 戻るボタンをクリックした時の処理
-       @objc func back() {
-           print("戻るボタンがクリックされた")
-       }
-        
-       // 進むボタンをクリックした時の処理
-       @objc func goToNext() {
-           print("進むボタンがクリックされた")
-       }
+    // 戻るボタンをクリックした時の処理
+    @objc func back() {
+        print("戻るボタンがクリックされた")
+    }
+     
+    // 進むボタンをクリックした時の処理
+    @objc func goToNext() {
+        print("進むボタンがクリックされた")
+    }
+    
+
 }
-
-
-
-
