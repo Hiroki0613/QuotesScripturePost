@@ -8,6 +8,8 @@
 
 import UIKit
 
+
+//共通のボタンデザインを採用するために用意
 class QSButton: UIButton {
     
     override init(frame: CGRect) {

@@ -8,6 +8,8 @@
 
 import UIKit
 
+
+//Home画面の右下に投稿ボタンを実装するために用意
 class PostButton: UIButton {
     
     override init(frame: CGRect) {

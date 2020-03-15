@@ -8,6 +8,8 @@
 
 import UIKit
 
+
+//Home画面で表示するCell
 class HomePostTableCell: UITableViewCell {
     
     //実装確認のプレースホルダー

@@ -79,20 +79,44 @@
 			children = (
 				7F46362D241CB81600F50EE2 /* AppDelegate.swift */,
 				7F46362F241CB81600F50EE2 /* SceneDelegate.swift */,
-				7F46364B241CFF6800F50EE2 /* PostButton.swift */,
-				7F463631241CB81600F50EE2 /* HomeVC.swift */,
-				7F46364D241D0B9000F50EE2 /* LoginVC.swift */,
-				7F463649241CE41200F50EE2 /* HomePostTableCell.swift */,
-				7F463641241CC10000F50EE2 /* BellVC.swift */,
-				7F463643241CC11500F50EE2 /* EditVC.swift */,
-				7F463636241CB81800F50EE2 /* Assets.xcassets */,
 				7F463638241CB81800F50EE2 /* LaunchScreen.storyboard */,
+				7F463653241E30CE00F50EE2 /* Helpers */,
+				7F463652241E2FF300F50EE2 /* Parts */,
+				7F463651241E2FA000F50EE2 /* ViewControllers */,
+				7F463636241CB81800F50EE2 /* Assets.xcassets */,
 				7F46363B241CB81800F50EE2 /* Info.plist */,
-				7F463645241CCAB000F50EE2 /* Constants.swift */,
 				7F463647241CDBF900F50EE2 /* GoogleService-Info.plist */,
-				7F46364F241D180700F50EE2 /* QSButton.swift */,
 			);
 			path = QuotesScripturePost;
+			sourceTree = "<group>";
+		};
+		7F463651241E2FA000F50EE2 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				7F463631241CB81600F50EE2 /* HomeVC.swift */,
+				7F463641241CC10000F50EE2 /* BellVC.swift */,
+				7F463643241CC11500F50EE2 /* EditVC.swift */,
+				7F46364D241D0B9000F50EE2 /* LoginVC.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		7F463652241E2FF300F50EE2 /* Parts */ = {
+			isa = PBXGroup;
+			children = (
+				7F46364F241D180700F50EE2 /* QSButton.swift */,
+				7F46364B241CFF6800F50EE2 /* PostButton.swift */,
+				7F463649241CE41200F50EE2 /* HomePostTableCell.swift */,
+			);
+			path = Parts;
+			sourceTree = "<group>";
+		};
+		7F463653241E30CE00F50EE2 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				7F463645241CCAB000F50EE2 /* Constants.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		D944FDD153A2BA09757615A5 /* Frameworks */ = {
