@@ -22,7 +22,6 @@
 		7F463650241D180700F50EE2 /* QSButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F46364F241D180700F50EE2 /* QSButton.swift */; };
 		7F463655241E359300F50EE2 /* QSToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F463654241E359300F50EE2 /* QSToolBar.swift */; };
 		7F463657241E3A3400F50EE2 /* SelectPostImageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F463656241E3A3400F50EE2 /* SelectPostImageVC.swift */; };
-		7F46365B241E5AAC00F50EE2 /* testVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F46365A241E5AAC00F50EE2 /* testVC.swift */; };
 		B641A168C296076A2DA5CF89 /* Pods_QuotesScripturePost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BCB7B118E87F3D733C214D9 /* Pods_QuotesScripturePost.framework */; };
 /* End PBXBuildFile section */
 
@@ -45,7 +44,6 @@
 		7F46364F241D180700F50EE2 /* QSButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QSButton.swift; sourceTree = "<group>"; };
 		7F463654241E359300F50EE2 /* QSToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QSToolBar.swift; sourceTree = "<group>"; };
 		7F463656241E3A3400F50EE2 /* SelectPostImageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPostImageVC.swift; sourceTree = "<group>"; };
-		7F46365A241E5AAC00F50EE2 /* testVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testVC.swift; sourceTree = "<group>"; };
 		82AD43EAB3AF2C9FFDD1364C /* Pods-QuotesScripturePost.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuotesScripturePost.release.xcconfig"; path = "Target Support Files/Pods-QuotesScripturePost/Pods-QuotesScripturePost.release.xcconfig"; sourceTree = "<group>"; };
 		E0BA0FA24CEA1865B7218A38 /* Pods-QuotesScripturePost.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuotesScripturePost.debug.xcconfig"; path = "Target Support Files/Pods-QuotesScripturePost/Pods-QuotesScripturePost.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -104,7 +102,6 @@
 				7F463643241CC11500F50EE2 /* EditVC.swift */,
 				7F46364D241D0B9000F50EE2 /* LoginVC.swift */,
 				7F463656241E3A3400F50EE2 /* SelectPostImageVC.swift */,
-				7F46365A241E5AAC00F50EE2 /* testVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -286,7 +283,6 @@
 				7F46362E241CB81600F50EE2 /* AppDelegate.swift in Sources */,
 				7F46364E241D0B9000F50EE2 /* LoginVC.swift in Sources */,
 				7F46364C241CFF6800F50EE2 /* PostButton.swift in Sources */,
-				7F46365B241E5AAC00F50EE2 /* testVC.swift in Sources */,
 				7F463650241D180700F50EE2 /* QSButton.swift in Sources */,
 				7F463630241CB81600F50EE2 /* SceneDelegate.swift in Sources */,
 				7F463646241CCAB000F50EE2 /* Constants.swift in Sources */,
