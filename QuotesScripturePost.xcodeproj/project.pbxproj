@@ -20,6 +20,7 @@
 		7F46364C241CFF6800F50EE2 /* PostButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F46364B241CFF6800F50EE2 /* PostButton.swift */; };
 		7F46364E241D0B9000F50EE2 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F46364D241D0B9000F50EE2 /* LoginVC.swift */; };
 		7F463650241D180700F50EE2 /* QSButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F46364F241D180700F50EE2 /* QSButton.swift */; };
+		7F463655241E359300F50EE2 /* QSToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F463654241E359300F50EE2 /* QSToolBar.swift */; };
 		B641A168C296076A2DA5CF89 /* Pods_QuotesScripturePost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BCB7B118E87F3D733C214D9 /* Pods_QuotesScripturePost.framework */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +41,7 @@
 		7F46364B241CFF6800F50EE2 /* PostButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostButton.swift; sourceTree = "<group>"; };
 		7F46364D241D0B9000F50EE2 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		7F46364F241D180700F50EE2 /* QSButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QSButton.swift; sourceTree = "<group>"; };
+		7F463654241E359300F50EE2 /* QSToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QSToolBar.swift; sourceTree = "<group>"; };
 		82AD43EAB3AF2C9FFDD1364C /* Pods-QuotesScripturePost.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuotesScripturePost.release.xcconfig"; path = "Target Support Files/Pods-QuotesScripturePost/Pods-QuotesScripturePost.release.xcconfig"; sourceTree = "<group>"; };
 		E0BA0FA24CEA1865B7218A38 /* Pods-QuotesScripturePost.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuotesScripturePost.debug.xcconfig"; path = "Target Support Files/Pods-QuotesScripturePost/Pods-QuotesScripturePost.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -107,6 +109,7 @@
 				7F46364F241D180700F50EE2 /* QSButton.swift */,
 				7F46364B241CFF6800F50EE2 /* PostButton.swift */,
 				7F463649241CE41200F50EE2 /* HomePostTableCell.swift */,
+				7F463654241E359300F50EE2 /* QSToolBar.swift */,
 			);
 			path = Parts;
 			sourceTree = "<group>";
@@ -279,6 +282,7 @@
 				7F463650241D180700F50EE2 /* QSButton.swift in Sources */,
 				7F463630241CB81600F50EE2 /* SceneDelegate.swift in Sources */,
 				7F463646241CCAB000F50EE2 /* Constants.swift in Sources */,
+				7F463655241E359300F50EE2 /* QSToolBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
