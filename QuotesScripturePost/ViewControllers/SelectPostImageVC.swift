@@ -10,26 +10,22 @@ import UIKit
 
 class SelectPostImageVC: UIViewController {
     
-    let toolbar = UIToolbar ()
+    let toolbar = QSToolBar()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .systemBlue
+        view.backgroundColor = .systemBackground
         configureToolbar()
-        
-        
-        
     }
     
     func configureToolbar() {
         self.view.addSubview(toolbar)
-        toolbar.barStyle = .black
         toolbar.translatesAutoresizingMaskIntoConstraints = false
         
         //戻るボタンの実装
         let backButton = UIButton(frame: CGRect(x: 0, y:0, width: 100, height: 100))
-        backButton.setTitle("Back", for: .normal)
+        backButton.setTitle("Close", for: .normal)
         backButton.addTarget(self, action: #selector(back), for: .touchUpInside)
         let backButtonItem = UIBarButtonItem(customView: backButton)
         
@@ -60,7 +56,10 @@ class SelectPostImageVC: UIViewController {
     
       // 戻るボタンをクリックした時の処理
        @objc func back() {
-           print("戻るボタンがクリックされた")
+        //モーダルで投稿画面に遷移、遷移先は全画面に変更
+        let homeVC = HomeVC()
+        homeVC.modalPresentationStyle = .fullScreen
+        self.present(homeVC, animated: true, completion: nil)
        }
         
        // 進むボタンをクリックした時の処理
