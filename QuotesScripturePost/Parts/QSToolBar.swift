@@ -22,8 +22,8 @@ class QSToolBar: UIToolbar {
     
     
     private func configure() {
-        barStyle = .black
-        barTintColor = .systemGray
+        barStyle = .default
+        barTintColor = .systemBlue
         isTranslucent = true
     }
 }
