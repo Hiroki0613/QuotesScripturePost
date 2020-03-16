@@ -12,6 +12,8 @@ class SelectPostImageVC: UIViewController {
     
     
     let postImage = UIImageView()
+    let takePhotoButton = QSButton(title: "Take Photo")
+    let useAlbumButton = QSButton(title: "Use Album")
     let toolbar = QSToolBar()
     
     override func viewDidLoad() {
@@ -19,6 +21,7 @@ class SelectPostImageVC: UIViewController {
         
         view.backgroundColor = .systemBackground
         configurePostImage()
+        configureButton()
         configureToolbar()
     }
     
@@ -35,6 +38,30 @@ class SelectPostImageVC: UIViewController {
             postImage.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             postImage.heightAnchor.constraint(equalToConstant: view.frame.width),
             postImage.heightAnchor.constraint(equalToConstant: view.frame.width)
+        ])
+    }
+    
+    func configureButton() {
+        self.view.addSubview(takePhotoButton)
+        self.view.addSubview(useAlbumButton)
+        
+        takePhotoButton.translatesAutoresizingMaskIntoConstraints = false
+        useAlbumButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        let padding:CGFloat = 30
+        
+        NSLayoutConstraint.activate([
+            takePhotoButton.topAnchor.constraint(equalTo: postImage.bottomAnchor, constant: padding),
+            takePhotoButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
+            takePhotoButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            takePhotoButton.heightAnchor.constraint(equalToConstant: 50),
+            
+            useAlbumButton.topAnchor.constraint(equalTo: takePhotoButton.bottomAnchor, constant: padding),
+            useAlbumButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
+            useAlbumButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            useAlbumButton.heightAnchor.constraint(equalToConstant: 50)
+            
+            
         ])
     }
     
