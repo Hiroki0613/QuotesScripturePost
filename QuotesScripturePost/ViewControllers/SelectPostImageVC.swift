@@ -10,14 +10,34 @@ import UIKit
 
 class SelectPostImageVC: UIViewController {
     
+    
+    let postImage = UIImageView()
     let toolbar = QSToolBar()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = .systemBackground
+        configurePostImage()
         configureToolbar()
     }
+    
+    func configurePostImage() {
+        self.view.addSubview(postImage)
+        postImage.translatesAutoresizingMaskIntoConstraints = false
+        
+        //暫定で桜の画像を入れている
+        postImage.image = UIImage(named: "sakura")
+        postImage.contentMode = .scaleToFill
+        
+        NSLayoutConstraint.activate([
+            postImage.topAnchor.constraint(equalTo: view.topAnchor),
+            postImage.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            postImage.heightAnchor.constraint(equalToConstant: view.frame.width),
+            postImage.heightAnchor.constraint(equalToConstant: view.frame.width)
+        ])
+    }
+    
     
     func configureToolbar() {
         self.view.addSubview(toolbar)
@@ -51,7 +71,6 @@ class SelectPostImageVC: UIViewController {
             toolbar.heightAnchor.constraint(equalToConstant: 50)
         ])
         
-    
     }
     
       // 戻るボタンをクリックした時の処理
