@@ -15,6 +15,7 @@ class SelectPostImageVC: UIViewController {
     let takePhotoButton = QSButton(title: "Take Photo")
     let useAlbumButton = QSButton(title: "Use Album")
     let usePixabayButton = QSButton(title: "Use Pixabay Stock")
+    let logoutButton = QSButton(title: "LOG OUT")
     let toolbar = QSToolBar()
     
     override func viewDidLoad() {
@@ -46,10 +47,12 @@ class SelectPostImageVC: UIViewController {
         self.view.addSubview(takePhotoButton)
         self.view.addSubview(useAlbumButton)
         self.view.addSubview(usePixabayButton)
+        self.view.addSubview(logoutButton)
         
         takePhotoButton.translatesAutoresizingMaskIntoConstraints = false
         useAlbumButton.translatesAutoresizingMaskIntoConstraints = false
         usePixabayButton.translatesAutoresizingMaskIntoConstraints = false
+        logoutButton.translatesAutoresizingMaskIntoConstraints = false
         
         let padding:CGFloat = 30
         
@@ -67,7 +70,12 @@ class SelectPostImageVC: UIViewController {
             usePixabayButton.topAnchor.constraint(equalTo: useAlbumButton.bottomAnchor, constant: padding),
             usePixabayButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
             usePixabayButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
-            usePixabayButton.heightAnchor.constraint(equalToConstant: 50)
+            usePixabayButton.heightAnchor.constraint(equalToConstant: 50),
+            
+            logoutButton.topAnchor.constraint(equalTo: usePixabayButton.bottomAnchor, constant: padding),
+            logoutButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
+            logoutButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            logoutButton.heightAnchor.constraint(equalToConstant: 50)
             
             
         ])
