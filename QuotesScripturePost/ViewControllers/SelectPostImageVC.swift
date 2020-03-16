@@ -126,7 +126,10 @@ class SelectPostImageVC: UIViewController {
         
        // 進むボタンをクリックした時の処理
        @objc func goToNext() {
-           print("進むボタンがクリックされた")
+        
+        let searchQuotesFromApiVC = SearchQuotesFromApiVC()
+        searchQuotesFromApiVC.modalPresentationStyle = .fullScreen
+        self.present(searchQuotesFromApiVC, animated: true, completion: nil)
        }
 }
 
