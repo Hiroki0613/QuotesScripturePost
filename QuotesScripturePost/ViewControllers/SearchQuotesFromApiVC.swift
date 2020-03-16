@@ -13,6 +13,8 @@ class SearchQuotesFromApiVC: UIViewController {
     let postImage = UIImageView()
     let searchQuoteLabel = QSLabel(textAlignment: .center, string: "Search Quotes")
     let quoteTextField = QSTextField()
+    let quoteTableView = UITableView()
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +40,7 @@ class SearchQuotesFromApiVC: UIViewController {
             postImage.heightAnchor.constraint(equalToConstant: view.frame.width)
         ])
     }
+    
     
     func configureLabel() {
         self.view.addSubview(searchQuoteLabel)
@@ -66,8 +69,35 @@ class SearchQuotesFromApiVC: UIViewController {
             quoteTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
             quoteTextField.heightAnchor.constraint(equalToConstant: 50)
         ])
-        
     }
 
+    
+    func configureTableView() {
+           view.addSubview(quoteTableView)
+           quoteTableView.delegate = self
+           quoteTableView.dataSource = self
+           
+           quoteTableView.register(HomePostTableCell.self, forCellReuseIdentifier: HomePostTableCell.reuseID)
+        
+        let padding:CGFloat = 20
+        
+        NSLayoutConstraint.activate([
+            quoteTableView.topAnchor.constraint(equalTo: quoteTextField.bottomAnchor, constant: padding),
+            quoteTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            quoteTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            quoteTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        ])
+       }
+}
 
+extension SearchQuotesFromApiVC: UITableViewDelegate,UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell()
+    }
+    
+    
 }
