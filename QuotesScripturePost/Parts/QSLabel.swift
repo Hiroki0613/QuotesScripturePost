@@ -20,15 +20,17 @@ class QSLabel: UILabel {
     }
     
     
-    init(textAlignment: NSTextAlignment) {
+    init(textAlignment: NSTextAlignment,string:String) {
         super.init(frame: .zero)
         self.textAlignment = textAlignment
+        self.text = string
         configure()
     }
     
     //QSLabelを作成するためのプロパティを定義
     private func configure(){
         textColor                 = .secondaryLabel
+        
         font                      = UIFont.preferredFont(forTextStyle: .body)
         adjustsFontSizeToFitWidth = true
         minimumScaleFactor        = 0.75
