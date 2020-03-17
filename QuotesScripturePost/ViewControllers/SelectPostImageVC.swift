@@ -119,17 +119,56 @@ class SelectPostImageVC: UIViewController {
       // 戻るボタンをクリックした時の処理
        @objc func back() {
         //モーダルで投稿画面に遷移、遷移先は全画面に変更
-        let homeVC = HomeVC()
+        let homeVC = createTabbar()
         homeVC.modalPresentationStyle = .fullScreen
         self.present(homeVC, animated: true, completion: nil)
+//        self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
        }
         
        // 進むボタンをクリックした時の処理
        @objc func goToNext() {
         
-        let searchQuotesFromApiVC = SearchQuotesFromApiVC()
+        let searchQuotesFromApiVC = BellVC()
         searchQuotesFromApiVC.modalPresentationStyle = .fullScreen
         self.present(searchQuotesFromApiVC, animated: true, completion: nil)
+       }
+    
+    
+    
+    func createHomeVC() -> UIViewController {
+           let homeVC = HomeVC()
+           homeVC.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: SFSymbols.home), tag: 0)
+           
+           return homeVC
+       }
+       
+       
+       func createBellVC() -> UIViewController {
+           let bellVC = BellVC()
+           bellVC.tabBarItem = UITabBarItem(title: SFSymbols.bell, image: UIImage(systemName: "bell"), tag: 1)
+           
+           return bellVC
+       }
+       
+       
+       func createEditVC() -> UIViewController {
+           let eidtVC = EditVC()
+           eidtVC.tabBarItem = UITabBarItem(title: SFSymbols.edit, image: UIImage(systemName: "gear"), tag: 0)
+           
+           return eidtVC
+       }
+       
+       
+       
+       func createTabbar() -> UITabBarController {
+           //tabarをインスタンス化
+           let tabbar = UITabBarController()
+           
+
+           //tabbarにつけるViewControllerを実装
+           tabbar.viewControllers = [createHomeVC(), createBellVC(), createEditVC()]
+           
+           return tabbar
        }
 }
 
