@@ -27,6 +27,7 @@
 		7F463661241FB72300F50EE2 /* QSTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F463660241FB72300F50EE2 /* QSTextField.swift */; };
 		7F472B36242391860063BA75 /* SearchQuotesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F472B35242391860063BA75 /* SearchQuotesCell.swift */; };
 		7F472B3824239F3A0063BA75 /* PostQuotesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F472B3724239F3A0063BA75 /* PostQuotesVC.swift */; };
+		7F472B3A2423B53D0063BA75 /* BellTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F472B392423B53D0063BA75 /* BellTableCell.swift */; };
 		B641A168C296076A2DA5CF89 /* Pods_QuotesScripturePost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BCB7B118E87F3D733C214D9 /* Pods_QuotesScripturePost.framework */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +55,7 @@
 		7F463660241FB72300F50EE2 /* QSTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QSTextField.swift; sourceTree = "<group>"; };
 		7F472B35242391860063BA75 /* SearchQuotesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchQuotesCell.swift; sourceTree = "<group>"; };
 		7F472B3724239F3A0063BA75 /* PostQuotesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostQuotesVC.swift; sourceTree = "<group>"; };
+		7F472B392423B53D0063BA75 /* BellTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BellTableCell.swift; sourceTree = "<group>"; };
 		82AD43EAB3AF2C9FFDD1364C /* Pods-QuotesScripturePost.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuotesScripturePost.release.xcconfig"; path = "Target Support Files/Pods-QuotesScripturePost/Pods-QuotesScripturePost.release.xcconfig"; sourceTree = "<group>"; };
 		E0BA0FA24CEA1865B7218A38 /* Pods-QuotesScripturePost.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuotesScripturePost.debug.xcconfig"; path = "Target Support Files/Pods-QuotesScripturePost/Pods-QuotesScripturePost.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -125,6 +127,7 @@
 				7F46364B241CFF6800F50EE2 /* PostButton.swift */,
 				7F463649241CE41200F50EE2 /* HomePostTableCell.swift */,
 				7F472B35242391860063BA75 /* SearchQuotesCell.swift */,
+				7F472B392423B53D0063BA75 /* BellTableCell.swift */,
 				7F463654241E359300F50EE2 /* QSToolBar.swift */,
 				7F46365E241FB40400F50EE2 /* QSLabel.swift */,
 				7F463660241FB72300F50EE2 /* QSTextField.swift */,
@@ -305,6 +308,7 @@
 				7F46365F241FB40400F50EE2 /* QSLabel.swift in Sources */,
 				7F463630241CB81600F50EE2 /* SceneDelegate.swift in Sources */,
 				7F463646241CCAB000F50EE2 /* Constants.swift in Sources */,
+				7F472B3A2423B53D0063BA75 /* BellTableCell.swift in Sources */,
 				7F472B3824239F3A0063BA75 /* PostQuotesVC.swift in Sources */,
 				7F463655241E359300F50EE2 /* QSToolBar.swift in Sources */,
 			);
