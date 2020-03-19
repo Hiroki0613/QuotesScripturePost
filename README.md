@@ -1,7 +1,7 @@
 # QuotesScripturePost
 
 選んだ画像に文章を載せるて投稿するだけの簡易アプリです。
-Firebase(+可能ならRealm)を使って作成しています。
+Firebaseを使って作成しています。
 
 完成イメージです
 <br>
