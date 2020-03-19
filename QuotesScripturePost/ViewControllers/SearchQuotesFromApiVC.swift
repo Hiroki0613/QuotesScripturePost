@@ -14,6 +14,7 @@ class SearchQuotesFromApiVC: UIViewController {
     let searchQuoteLabel = QSLabel(textAlignment: .center, string: "Search Quotes")
     let quoteTextField = QSTextField()
     let quoteTableView = UITableView()
+    let toolbar = QSToolBar()
     
     
     override func viewDidLoad() {
@@ -23,6 +24,7 @@ class SearchQuotesFromApiVC: UIViewController {
         configureLabel()
         configureTextField()
         configureTableView()
+        configureToolbar()
     }
     
     
@@ -77,19 +79,66 @@ class SearchQuotesFromApiVC: UIViewController {
         view.addSubview(quoteTableView)
         quoteTableView.delegate = self
         quoteTableView.dataSource = self
-        quoteTableView.frame = CGRect(x: 0, y: view.frame.size.height/2, width: view.frame.size.width, height: view.frame.size.height/2)
-        quoteTableView.rowHeight = 100
+        quoteTableView.frame = CGRect(x: 0, y: view.frame.size.height/2, width: view.frame.size.width, height: view.frame.size.height/2 - 70)
         quoteTableView.register(SearchQuotesCell.self, forCellReuseIdentifier: SearchQuotesCell.reuseID)
         
         let padding:CGFloat = 20
         
         NSLayoutConstraint.activate([
             quoteTableView.topAnchor.constraint(equalTo: quoteTextField.bottomAnchor, constant: padding),
-            quoteTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
-            quoteTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            quoteTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            quoteTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             quoteTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
+    
+    
+    func configureToolbar() {
+        self.view.addSubview(toolbar)
+        toolbar.translatesAutoresizingMaskIntoConstraints = false
+        
+        //戻るボタンの実装
+        let backButton = UIButton(frame: CGRect(x: 0, y:0, width: 100, height: 100))
+        backButton.setTitle("Close", for: .normal)
+        backButton.addTarget(self, action: #selector(back), for: .touchUpInside)
+        let backButtonItem = UIBarButtonItem(customView: backButton)
+        
+        //ボタンを左右に分けるためのスペースの実装
+        let flexibleItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        
+        
+        //進むボタンの実装
+        let nextButton = UIButton(frame: CGRect(x: 0, y:0, width: 100, height: 100))
+        nextButton.setTitle("Next", for: .normal)
+        nextButton.addTarget(self, action: #selector(goToNext), for: .touchUpInside)
+        let nextButtonItem = UIBarButtonItem(customView: nextButton)
+        
+        // ツールバーにアイテムを追加する.
+        toolbar.items = [backButtonItem,flexibleItem,nextButtonItem]
+        
+        self.view.addSubview(toolbar)
+        
+        NSLayoutConstraint.activate([
+            toolbar.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            toolbar.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            toolbar.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            toolbar.heightAnchor.constraint(equalToConstant: 50)
+        ])
+    }
+    
+    
+    // 戻るボタンをクリックした時の処理
+       @objc func back() {
+           self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
+       }
+       
+       // 進むボタンをクリックした時の処理
+       @objc func goToNext() {
+           
+           let searchQuotesFromApiVC = SearchQuotesFromApiVC()
+           searchQuotesFromApiVC.modalPresentationStyle = .fullScreen
+           self.present(searchQuotesFromApiVC, animated: true, completion: nil)
+       }
 }
 
 extension SearchQuotesFromApiVC: UITableViewDelegate,UITableViewDataSource {
@@ -103,5 +152,12 @@ extension SearchQuotesFromApiVC: UITableViewDelegate,UITableViewDataSource {
         cell.set(indexPath: indexPath)
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        tableView.estimatedRowHeight = 100
+        //UITableView.automaticDimensionでcellの高さを可変にする
+        return UITableView.automaticDimension
     }
 }

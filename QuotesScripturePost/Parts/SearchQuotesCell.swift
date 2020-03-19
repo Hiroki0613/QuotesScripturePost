@@ -44,18 +44,18 @@ class SearchQuotesCell: UITableViewCell {
         authorName.translatesAutoresizingMaskIntoConstraints = false
         quotesLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        let padding:CGFloat = 10
+        let padding:CGFloat = 12
         
         NSLayoutConstraint.activate([
             authorName.topAnchor.constraint(equalTo: self.topAnchor, constant: padding),
             authorName.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: padding),
             authorName.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -padding),
-            authorName.heightAnchor.constraint(equalToConstant: 20),
+            authorName.heightAnchor.constraint(equalToConstant: 10),
             
             quotesLabel.topAnchor.constraint(equalTo: authorName.bottomAnchor, constant: padding),
             quotesLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: padding * 3),
             quotesLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -padding),
-            quotesLabel.heightAnchor.constraint(equalToConstant: 30)
+            quotesLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -padding)
         ])
     }
 }
