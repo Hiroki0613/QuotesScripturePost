@@ -15,9 +15,6 @@ class SearchQuotesFromApiVC: UIViewController {
     let quoteTextField = QSTextField()
     let quoteTableView = UITableView()
     
-    //暫定的な入力値
-    var nameArray = ["渋谷","新宿","恵比寿","五反田","高輪ゲートウェイ"]
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,8 +77,9 @@ class SearchQuotesFromApiVC: UIViewController {
         view.addSubview(quoteTableView)
         quoteTableView.delegate = self
         quoteTableView.dataSource = self
+        quoteTableView.frame = CGRect(x: 0, y: view.frame.size.height/2, width: view.frame.size.width, height: view.frame.size.height/2)
         quoteTableView.rowHeight = 100
-        quoteTableView.register(HomePostTableCell.self, forCellReuseIdentifier: HomePostTableCell.reuseID)
+        quoteTableView.register(SearchQuotesCell.self, forCellReuseIdentifier: SearchQuotesCell.reuseID)
         
         let padding:CGFloat = 20
         
@@ -100,12 +98,10 @@ extension SearchQuotesFromApiVC: UITableViewDelegate,UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: HomePostTableCell.reuseID, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: SearchQuotesCell.reuseID, for: indexPath) as! SearchQuotesCell
         
-
+        cell.set(indexPath: indexPath)
         
         return cell
     }
-    
-    
 }
