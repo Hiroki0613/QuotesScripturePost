@@ -14,14 +14,18 @@ class SearchQuotesFromApiVC: UIViewController {
     let searchQuoteLabel = QSLabel(textAlignment: .center, string: "Search Quotes")
     let quoteTextField = QSTextField()
     let quoteTableView = UITableView()
-
-
+    
+    //暫定的な入力値
+    var nameArray = ["渋谷","新宿","恵比寿","五反田","高輪ゲートウェイ"]
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         configurePostImage()
         configureLabel()
         configureTextField()
+        configureTableView()
     }
     
     
@@ -70,33 +74,37 @@ class SearchQuotesFromApiVC: UIViewController {
             quoteTextField.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
-
+    
     
     func configureTableView() {
-           view.addSubview(quoteTableView)
-           quoteTableView.delegate = self
-           quoteTableView.dataSource = self
-           
-           quoteTableView.register(HomePostTableCell.self, forCellReuseIdentifier: HomePostTableCell.reuseID)
+        view.addSubview(quoteTableView)
+        quoteTableView.delegate = self
+        quoteTableView.dataSource = self
+        quoteTableView.rowHeight = 100
+        quoteTableView.register(HomePostTableCell.self, forCellReuseIdentifier: HomePostTableCell.reuseID)
         
         let padding:CGFloat = 20
         
         NSLayoutConstraint.activate([
             quoteTableView.topAnchor.constraint(equalTo: quoteTextField.bottomAnchor, constant: padding),
-            quoteTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            quoteTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            quoteTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
+            quoteTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
             quoteTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
-       }
+    }
 }
 
 extension SearchQuotesFromApiVC: UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return 5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: HomePostTableCell.reuseID, for: indexPath)
+        
+
+        
+        return cell
     }
     
     
