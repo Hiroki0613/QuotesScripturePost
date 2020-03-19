@@ -99,7 +99,7 @@ class SearchQuotesFromApiVC: UIViewController {
         
         //戻るボタンの実装
         let backButton = UIButton(frame: CGRect(x: 0, y:0, width: 100, height: 100))
-        backButton.setTitle("Close", for: .normal)
+        backButton.setTitle("Back", for: .normal)
         backButton.addTarget(self, action: #selector(back), for: .touchUpInside)
         let backButtonItem = UIBarButtonItem(customView: backButton)
         
@@ -129,17 +129,18 @@ class SearchQuotesFromApiVC: UIViewController {
     
     // 戻るボタンをクリックした時の処理
        @objc func back() {
-           self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
+           self.presentingViewController?.dismiss(animated: true, completion: nil)
        }
        
        // 進むボタンをクリックした時の処理
        @objc func goToNext() {
            
-           let searchQuotesFromApiVC = SearchQuotesFromApiVC()
-           searchQuotesFromApiVC.modalPresentationStyle = .fullScreen
-           self.present(searchQuotesFromApiVC, animated: true, completion: nil)
+           let postQuotesVC = PostQuotesVC()
+           postQuotesVC.modalPresentationStyle = .fullScreen
+           self.present(postQuotesVC, animated: true, completion: nil)
        }
 }
+
 
 extension SearchQuotesFromApiVC: UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
