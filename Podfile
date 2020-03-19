@@ -14,5 +14,6 @@ target 'QuotesScripturePost' do
   pod 'PKHUD'
   pod 'lottie-ios'
   pod 'SDWebImage', '~> 5.0'
+  pod 'CropViewController'
 
 end
