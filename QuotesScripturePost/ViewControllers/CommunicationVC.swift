@@ -166,6 +166,8 @@ class CommunicationVC: UIViewController {
         communicationTextField.translatesAutoresizingMaskIntoConstraints = false
         postCommentButton.translatesAutoresizingMaskIntoConstraints = false
         
+        postCommentButton.addTarget(self, action: #selector(postComment), for: .touchUpInside)
+        
         let padding:CGFloat = 10
         
         NSLayoutConstraint.activate([
@@ -213,6 +215,14 @@ class CommunicationVC: UIViewController {
     @objc func back() {
         self.presentingViewController?.dismiss(animated: true, completion: nil)
     }
+    
+    
+    //postCommentButton(投稿ボタンをクリックした時の処理)
+    @objc func postComment() {
+        guard let communicationTextFieldText = communicationTextField.text else { return }
+        print(communicationTextFieldText)
+    }
+    
 }
 
 
