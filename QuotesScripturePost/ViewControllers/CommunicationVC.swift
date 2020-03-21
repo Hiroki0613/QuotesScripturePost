@@ -32,13 +32,16 @@ class CommunicationVC: UIViewController {
     
     //    let shareButton = UIButton()
     let communicationTableView = UITableView()
+    let toolbar = QSToolBar()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         set()
-        configure()
+        configurePostView()
+        configurefCommunicationTableView()
+        configureToolbar()
     }
     
     
@@ -54,7 +57,7 @@ class CommunicationVC: UIViewController {
     }
     
     
-    private func configure(){
+    private func configurePostView(){
         view.addSubview(userImage)
         view.addSubview(userNameLabel)
         view.addSubview(postDateLabel)
@@ -64,8 +67,6 @@ class CommunicationVC: UIViewController {
         view.addSubview(commentButton)
         view.addSubview(commentNumber)
         //        view.addSubview(shareButton)
-        view.addSubview(communicationTableView)
-        
         
         
         userImage.translatesAutoresizingMaskIntoConstraints = false
@@ -77,11 +78,9 @@ class CommunicationVC: UIViewController {
         commentButton.translatesAutoresizingMaskIntoConstraints = false
         commentNumber.translatesAutoresizingMaskIntoConstraints = false
         //        shareButton.translatesAutoresizingMaskIntoConstraints = false
-        communicationTableView.translatesAutoresizingMaskIntoConstraints = false
         
         userNameLabel.textAlignment = .left
         postDateLabel.textAlignment = .right
-        communicationTableView.backgroundColor = .systemPink
         
         let padding:CGFloat = 10
         
@@ -137,15 +136,59 @@ class CommunicationVC: UIViewController {
             
             //シェアボタンを定義(こちらは後日、実装予定)
             
-            
-            
-            //commentLabelを定義
+        ])
+    }
+    
+    
+    func configurefCommunicationTableView() {
+        view.addSubview(communicationTableView)
+        communicationTableView.translatesAutoresizingMaskIntoConstraints = false
+        
+        communicationTableView.backgroundColor = .systemPink
+        
+        let padding:CGFloat = 10
+        
+        NSLayoutConstraint.activate([
+            //communicationTableViewを定義
             communicationTableView.topAnchor.constraint(equalTo: heartButton.bottomAnchor, constant: padding),
             communicationTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
             communicationTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
             communicationTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
+    
+    
+    func configureToolbar() {
+        self.view.addSubview(toolbar)
+        toolbar.translatesAutoresizingMaskIntoConstraints = false
+        
+        //戻るボタンの実装
+        let backButton = UIButton(frame: CGRect(x: 0, y:0, width: 100, height: 100))
+        backButton.setTitle("Close", for: .normal)
+        backButton.addTarget(self, action: #selector(back), for: .touchUpInside)
+        let backButtonItem = UIBarButtonItem(customView: backButton)
+        
+        //ボタンを左右に分けるためのスペースの実装
+        let flexibleItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        
+        // ツールバーにアイテムを追加する.
+        toolbar.items = [backButtonItem,flexibleItem]
+        
+        self.view.addSubview(toolbar)
+        
+        NSLayoutConstraint.activate([
+            toolbar.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            toolbar.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            toolbar.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            toolbar.heightAnchor.constraint(equalToConstant: 50)
+        ])
+    }
+    
+    // 戻るボタンをクリックした時の処理
+    @objc func back() {
+        self.presentingViewController?.dismiss(animated: true, completion: nil)
+    }
+    
     
     
     
