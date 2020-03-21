@@ -29,7 +29,6 @@ class HomeVC: UIViewController {
         homeTableView.rowHeight = 500
         homeTableView.delegate = self
         homeTableView.dataSource = self
-        
         homeTableView.register(HomePostTableCell.self, forCellReuseIdentifier: HomePostTableCell.reuseID)
     }
     
@@ -50,9 +49,9 @@ class HomeVC: UIViewController {
     
     
     @objc func pushLoginVC() {
-        
         //モーダルでの画面遷移、遷移先は全画面に変更
-        let loginVC = LoginVC()
+        //暫定的にcommunicationVCへ画面遷移を変更、UI確認後にLoginVCへ戻すこと
+        let loginVC = CommunicationVC()
         loginVC.modalPresentationStyle = .fullScreen
         self.present(loginVC, animated: true, completion: nil)
     }
@@ -67,11 +66,8 @@ extension HomeVC: UITableViewDelegate,UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: HomePostTableCell.reuseID, for: indexPath) as! HomePostTableCell
-        
         cell.set(indexPath: indexPath)
-        
         return cell
     }
 }
