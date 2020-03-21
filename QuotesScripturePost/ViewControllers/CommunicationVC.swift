@@ -66,7 +66,6 @@ class CommunicationVC: UIViewController {
         view.addSubview(heartNumber)
         view.addSubview(commentButton)
         view.addSubview(commentNumber)
-        //        view.addSubview(shareButton)
         
         
         userImage.translatesAutoresizingMaskIntoConstraints = false
@@ -77,7 +76,6 @@ class CommunicationVC: UIViewController {
         heartNumber.translatesAutoresizingMaskIntoConstraints = false
         commentButton.translatesAutoresizingMaskIntoConstraints = false
         commentNumber.translatesAutoresizingMaskIntoConstraints = false
-        //        shareButton.translatesAutoresizingMaskIntoConstraints = false
         
         userNameLabel.textAlignment = .left
         postDateLabel.textAlignment = .right
@@ -132,19 +130,20 @@ class CommunicationVC: UIViewController {
             commentNumber.topAnchor.constraint(equalTo: postImage.bottomAnchor, constant: 10),
             commentNumber.leadingAnchor.constraint(equalTo: commentButton.trailingAnchor, constant: 5),
             commentNumber.heightAnchor.constraint(equalToConstant: 20),
-            commentNumber.widthAnchor.constraint(equalToConstant: 40),
-            
-            //シェアボタンを定義(こちらは後日、実装予定)
-            
+            commentNumber.widthAnchor.constraint(equalToConstant: 40)
         ])
     }
     
     
     func configurefCommunicationTableView() {
         view.addSubview(communicationTableView)
+
         communicationTableView.translatesAutoresizingMaskIntoConstraints = false
+        communicationTableView.backgroundColor = .systemBackground
         
-        communicationTableView.backgroundColor = .systemPink
+        communicationTableView.register(CommunicationTableCell.self, forCellReuseIdentifier: CommunicationTableCell.reuseID)
+        communicationTableView.delegate = self
+        communicationTableView.dataSource = self
         
         let padding:CGFloat = 10
         
@@ -184,12 +183,27 @@ class CommunicationVC: UIViewController {
         ])
     }
     
+    
     // 戻るボタンをクリックした時の処理
     @objc func back() {
         self.presentingViewController?.dismiss(animated: true, completion: nil)
     }
+}
+
+
+extension CommunicationVC:UITableViewDelegate,UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return commentArray.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: CommunicationTableCell.reuseID, for: indexPath) as! CommunicationTableCell
+        cell.set(indexPath: indexPath)
+        return cell
+    }
     
-    
-    
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        tableView.estimatedRowHeight = 300
+        return 300
+    }
 }

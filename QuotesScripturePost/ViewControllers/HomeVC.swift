@@ -20,12 +20,12 @@ class HomeVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBlue
-        configureTableView()
+        configureHomeTableView()
         configurePostButton()
     }
     
     
-    func configureTableView() {
+    func configureHomeTableView() {
         view.backgroundColor = .systemBackground
         view.addSubview(homeTableView)
         homeTableView.frame = view.bounds
@@ -54,7 +54,7 @@ class HomeVC: UIViewController {
     @objc func pushLoginVC() {
         //モーダルでの画面遷移、遷移先は全画面に変更
         //暫定的にcommunicationVCへ画面遷移を変更、UI確認後にLoginVCへ戻すこと
-        let loginVC = CommunicationVC()
+        let loginVC = LoginVC()
         loginVC.modalPresentationStyle = .fullScreen
         self.present(loginVC, animated: true, completion: nil)
     }
