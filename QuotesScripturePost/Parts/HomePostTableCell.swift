@@ -52,16 +52,27 @@ class HomePostTableCell: UITableViewCell {
     func set(indexPath: IndexPath){
         userImage.image = UIImage(named: imageArray[indexPath.row])
         userNameLabel.text = nameArray[indexPath.row]
+        
         postDateLabel.text = dateArray[indexPath.row]
         postImage.image = UIImage(named: postImageArray[indexPath.row])
+        
         heartButton.setImage(UIImage(systemName: SFSymbols.heart), for: .normal)
+        heartButton.addTarget(self, action: #selector(pushHeartButton), for: .touchUpInside)
+        heartButton.tag = indexPath.row
         heartNumber.text = "100"
+        
         commentButton.setImage(UIImage(systemName: SFSymbols.comment), for: .normal)
         commentNumber.text = "500"
+        
 //        shareButton.setImage(UIImage(systemName: SFSymbols.share), for: .normal)
         commentLabel.text = commentArray[indexPath.row]
         
     }
+    
+    @objc func pushHeartButton() {
+        print("ハートボタンが押された_\(heartButton.tag)番目の")
+    }
+    
     
     
     private func configure(){
