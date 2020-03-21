@@ -30,8 +30,9 @@ class CommunicationVC: UIViewController {
     let commentButton = UIButton()
     let commentNumber = UILabel()
     
-    //    let shareButton = UIButton()
     let communicationTableView = UITableView()
+    let communicationTextField = QSTextField()
+    let postCommentButton = QSButton(title: "投稿")
     let toolbar = QSToolBar()
     
     
@@ -42,6 +43,7 @@ class CommunicationVC: UIViewController {
         configurePostView()
         configurefCommunicationTableView()
         configureToolbar()
+        configureTextFieldAndPostCommunicationButton()
     }
     
     
@@ -153,6 +155,29 @@ class CommunicationVC: UIViewController {
             communicationTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
             communicationTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
             communicationTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        ])
+    }
+    
+    
+    func configureTextFieldAndPostCommunicationButton() {
+        self.view.addSubview(communicationTextField)
+        self.view.addSubview(postCommentButton)
+        
+        communicationTextField.translatesAutoresizingMaskIntoConstraints = false
+        postCommentButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        let padding:CGFloat = 10
+        
+        NSLayoutConstraint.activate([
+            communicationTextField.bottomAnchor.constraint(equalTo: toolbar.topAnchor,constant: -padding),
+            communicationTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
+            communicationTextField.trailingAnchor.constraint(equalTo: postCommentButton.leadingAnchor, constant: -padding),
+            communicationTextField.heightAnchor.constraint(equalToConstant: 50),
+            
+            postCommentButton.bottomAnchor.constraint(equalTo: toolbar.topAnchor,constant: -padding),
+            postCommentButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            postCommentButton.widthAnchor.constraint(equalToConstant: 50),
+            postCommentButton.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
     
