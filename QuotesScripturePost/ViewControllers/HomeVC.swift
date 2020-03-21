@@ -13,6 +13,9 @@ class HomeVC: UIViewController {
     let homeTableView = UITableView()
     let postButton = PostButton()
     
+    //どのセルのコメントボタンが押されたのかを確認する
+    var commentButtonIndexPath = 0
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,7 +71,20 @@ extension HomeVC: UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: HomePostTableCell.reuseID, for: indexPath) as! HomePostTableCell
         cell.set(indexPath: indexPath)
+        cell.commentButton.tag = indexPath.row
+        commentButtonIndexPath = cell.commentButton.tag
+        cell.commentButton.addTarget(self, action: #selector(pushCommentButton), for: .touchUpInside)
         return cell
+    }
+    
+    
+    
+    @objc func pushCommentButton () {
+        //モーダルでの画面遷移、遷移先は全画面に変更
+        print("コメントボタンが押された_\(commentButtonIndexPath)番目の")
+        let communicationVC = CommunicationVC()
+        communicationVC.modalPresentationStyle = .fullScreen
+        self.present(communicationVC, animated: true, completion: nil)
     }
 }
 

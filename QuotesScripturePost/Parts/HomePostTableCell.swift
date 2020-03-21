@@ -64,6 +64,7 @@ class HomePostTableCell: UITableViewCell {
         commentButton.setImage(UIImage(systemName: SFSymbols.comment), for: .normal)
         commentNumber.text = "500"
         
+        
 //        shareButton.setImage(UIImage(systemName: SFSymbols.share), for: .normal)
         commentLabel.text = commentArray[indexPath.row]
         
