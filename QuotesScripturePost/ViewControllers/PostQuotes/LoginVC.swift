@@ -107,7 +107,12 @@ extension LoginVC: FUIAuthDelegate {
             UserService.getUserProfile(userId: user.uid) { (u) in
     
                 if u == nil {
-                    //プロフィールが無いので、CreateProfileVCに遷移して、作成 (後日作成予定)
+                    //プロフィールが無いので、CreateProfileVCに遷移して、作成
+                    let createProfileVC = CreateProfileVC()
+                    createProfileVC.modalPresentationStyle = .fullScreen
+                    self.present(createProfileVC, animated: true, completion: nil)
+                    
+                    
                 } else {
                     LocalStorageService.saveCurrentUser(user: u!)
                     //プロフィール情報があるので、投稿画面へ遷移
