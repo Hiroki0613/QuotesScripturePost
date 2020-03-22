@@ -19,6 +19,12 @@ class CommunicationTableCell: UITableViewCell {
     
     
     static let reuseID = "CommunicationTableCell"
+    
+    //cellの間に空白を設けるために設定
+    let containerView = UIView()
+    let containerView2 = UIView()
+    
+    //cell内部に設定するUI部品
     let userImage = UIImageView()
     let userNameLabel = UILabel()
     let commentLabel = UILabel()
@@ -28,7 +34,10 @@ class CommunicationTableCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        configure()
+        configureContainerView()
+//        configureContainerView2()
+        configureCell()
+        
     }
     
     
@@ -45,12 +54,47 @@ class CommunicationTableCell: UITableViewCell {
         postDateLabel.text = dateArray[indexPath.row]
     }
     
+    private func configureContainerView() {
+        addSubview(containerView)
+        containerView.translatesAutoresizingMaskIntoConstraints = false
+        
+        let padding:CGFloat = 0
+        
+        NSLayoutConstraint.activate([
+            containerView.topAnchor.constraint(equalTo: self.topAnchor,constant: padding),
+            containerView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            containerView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            containerView.bottomAnchor.constraint(equalTo: self.bottomAnchor,constant: -padding)
+        ])
+    }
+
     
-    private func configure(){
-        addSubview(userImage)
-        addSubview(userNameLabel)
-        addSubview(commentLabel)
-        addSubview(postDateLabel)
+//    private func configureContainerView2() {
+//        backgroundColor = .systemGreen
+//        addSubview(containerView2)
+//        containerView2.frame = CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height)
+//
+//        containerView2.translatesAutoresizingMaskIntoConstraints = false
+//
+//        let padding:CGFloat = 0
+//
+//        NSLayoutConstraint.activate([
+//            containerView2.topAnchor.constraint(equalTo: containerView.topAnchor,constant: padding),
+//            containerView2.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+//            containerView2.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+//            containerView2.bottomAnchor.constraint(equalTo: containerView.bottomAnchor,constant: -padding)
+//        ])
+//    }
+    
+    
+    
+    private func configureCell(){
+        backgroundColor = .secondarySystemBackground
+        layer.cornerRadius = 20
+        containerView.addSubview(userImage)
+        containerView.addSubview(userNameLabel)
+        containerView.addSubview(commentLabel)
+        containerView.addSubview(postDateLabel)
         
         userImage.translatesAutoresizingMaskIntoConstraints = false
         userNameLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -64,27 +108,27 @@ class CommunicationTableCell: UITableViewCell {
         
         NSLayoutConstraint.activate([
             //Userのイメージ画像のcell定義
-            userImage.topAnchor.constraint(equalTo: self.topAnchor, constant: padding),
-            userImage.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: padding),
+            userImage.topAnchor.constraint(equalTo: containerView.topAnchor, constant: padding),
+            userImage.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: padding),
             userImage.heightAnchor.constraint(equalToConstant: 40),
             userImage.widthAnchor.constraint(equalToConstant: 40),
 
             //Userの名前のcell定義
-            userNameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: padding + 10),
+            userNameLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: padding + 10),
             userNameLabel.leadingAnchor.constraint(equalTo: userImage.trailingAnchor, constant: 10),
-            userNameLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -padding),
+            userNameLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -padding),
             userNameLabel.heightAnchor.constraint(equalToConstant: 20),
             
             //commentLabelを定義
             commentLabel.topAnchor.constraint(equalTo: userImage.bottomAnchor, constant: padding),
-            commentLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: padding),
-            commentLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -padding),
+            commentLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: padding),
+            commentLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -padding),
             commentLabel.heightAnchor.constraint(equalToConstant: 30),
 
             //Userの投稿日時を定義
             postDateLabel.topAnchor.constraint(equalTo: commentLabel.bottomAnchor, constant: padding),
-            postDateLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: padding),
-            postDateLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -padding),
+            postDateLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: padding),
+            postDateLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -padding),
             postDateLabel.heightAnchor.constraint(equalToConstant: 20)
         ])
     }

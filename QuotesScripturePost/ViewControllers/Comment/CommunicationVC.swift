@@ -241,4 +241,5 @@ extension CommunicationVC:UITableViewDelegate,UITableViewDataSource {
         tableView.estimatedRowHeight = 300
         return 300
     }
+    
 }
