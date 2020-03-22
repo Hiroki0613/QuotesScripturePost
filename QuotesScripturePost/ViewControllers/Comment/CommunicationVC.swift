@@ -33,17 +33,38 @@ class CommunicationVC: UIViewController {
     let communicationTableView = UITableView()
     let communicationTextField = QSTextField()
     let postCommentButton = QSButton(title: "投稿")
+    
+    //キーボードを開いた時に、重ならないようにViewをずらすために設定
+    let scrollView = UIScrollView()
+
+    // Screenの高さ
+    var screenHeight:CGFloat!
+    // Screenの幅
+    var screenWidth:CGFloat!
+    
+    //ツールバーの設定
     let toolbar = QSToolBar()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
+        configureScrollView()
         set()
         configurePostView()
         configurefCommunicationTableView()
         configureToolbar()
         configureTextFieldAndPostCommunicationButton()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+           super.viewWillAppear(animated)
+//        monitorTextFieldAppear()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+//        monitorTextFieldDisappear()
     }
     
     
@@ -60,14 +81,14 @@ class CommunicationVC: UIViewController {
     
     
     private func configurePostView(){
-        view.addSubview(userImage)
-        view.addSubview(userNameLabel)
-        view.addSubview(postDateLabel)
-        view.addSubview(postImage)
-        view.addSubview(heartButton)
-        view.addSubview(heartNumber)
-        view.addSubview(commentButton)
-        view.addSubview(commentNumber)
+        scrollView.addSubview(userImage)
+        scrollView.addSubview(userNameLabel)
+        scrollView.addSubview(postDateLabel)
+        scrollView.addSubview(postImage)
+        scrollView.addSubview(heartButton)
+        scrollView.addSubview(heartNumber)
+        scrollView.addSubview(commentButton)
+        scrollView.addSubview(commentNumber)
         
         
         userImage.translatesAutoresizingMaskIntoConstraints = false
@@ -138,7 +159,7 @@ class CommunicationVC: UIViewController {
     
     
     func configurefCommunicationTableView() {
-        view.addSubview(communicationTableView)
+        scrollView.addSubview(communicationTableView)
 
         communicationTableView.translatesAutoresizingMaskIntoConstraints = false
         communicationTableView.backgroundColor = .systemBackground
@@ -160,8 +181,9 @@ class CommunicationVC: UIViewController {
     
     
     func configureTextFieldAndPostCommunicationButton() {
-        self.view.addSubview(communicationTextField)
-        self.view.addSubview(postCommentButton)
+        communicationTextField.delegate = self
+        scrollView.addSubview(communicationTextField)
+        scrollView.addSubview(postCommentButton)
         
         communicationTextField.translatesAutoresizingMaskIntoConstraints = false
         postCommentButton.translatesAutoresizingMaskIntoConstraints = false
@@ -184,8 +206,50 @@ class CommunicationVC: UIViewController {
     }
     
     
+    func configureScrollView () {
+        scrollView.delegate = self
+        let screenSize: CGRect = UIScreen.main.bounds
+        
+        screenWidth = screenSize.width
+        screenHeight = screenSize.height
+        // 表示窓のサイズと位置を設定
+        scrollView.frame.size =
+            CGSize(width: screenWidth, height: screenHeight)
+        // UIScrollViewの大きさを画像サイズに設定
+        scrollView.contentSize = CGSize(width: screenWidth, height: screenHeight*2)
+        // スクロールの跳ね返り無し
+        scrollView.bounces = false
+        // ビューに追加
+        self.view.addSubview(scrollView)
+    }
+    
+    
+    //TextFieleの動きを監視する(開く)
+    func monitorTextFieldAppear() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(CommunicationVC.keyboardWillShow(_:)),
+                                               name: UIResponder.keyboardWillShowNotification,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(CommunicationVC.keyboardWillHide(_:)) ,
+                                               name: UIResponder.keyboardDidHideNotification,
+                                               object: nil)
+    }
+
+    
+    //TextFieleの動きを監視する(閉じる)
+    func monitorTextFieldDisappear() {
+        NotificationCenter.default.removeObserver(self,
+                                                  name: UIResponder.keyboardWillShowNotification,
+                                                  object: self.view.window)
+        NotificationCenter.default.removeObserver(self,
+                                                  name: UIResponder.keyboardDidHideNotification,
+                                                  object: self.view.window)
+    }
+    
+    
     func configureToolbar() {
-        self.view.addSubview(toolbar)
+        scrollView.addSubview(toolbar)
         toolbar.translatesAutoresizingMaskIntoConstraints = false
         
         //戻るボタンの実装
@@ -200,7 +264,6 @@ class CommunicationVC: UIViewController {
         // ツールバーにアイテムを追加する.
         toolbar.items = [backButtonItem,flexibleItem]
         
-        self.view.addSubview(toolbar)
         
         NSLayoutConstraint.activate([
             toolbar.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
@@ -243,3 +306,44 @@ extension CommunicationVC:UITableViewDelegate,UITableViewDataSource {
     }
     
 }
+
+
+extension CommunicationVC: UIScrollViewDelegate {
+    //scrollViewDelegateを宣言
+}
+
+
+extension CommunicationVC: UITextFieldDelegate {
+    
+    // 改行でキーボードを隠す
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
+    }
+    
+    
+    @objc func keyboardWillShow(_ notification: Notification) {
+        
+        let info = notification.userInfo!
+        
+        let keyboardFrame = (info[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        
+        // bottom of textField
+        let bottomTextField = communicationTextField.frame.origin.y + communicationTextField.frame.height
+        // top of keyboard
+        let topKeyboard = screenHeight - keyboardFrame.size.height
+        // 重なり
+        let distance = bottomTextField - topKeyboard
+        
+        if distance >= 0 {
+            // scrollViewのコンテツを上へオフセット + 50.0(追加のオフセット)
+            scrollView.contentOffset.y = distance + 50.0
+        }
+    }
+    
+    
+    @objc func keyboardWillHide(_ notification: Notification) {
+        scrollView.contentOffset.y = 0
+    }
+}
+
