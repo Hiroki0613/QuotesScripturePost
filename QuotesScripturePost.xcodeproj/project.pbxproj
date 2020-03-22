@@ -32,6 +32,7 @@
 		7F472B3E24263ACF0063BA75 /* CommunicationTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F472B3D24263ACF0063BA75 /* CommunicationTableCell.swift */; };
 		7F472B49242746670063BA75 /* CommunicationTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F472B48242746670063BA75 /* CommunicationTableViewHeader.swift */; };
 		7F472B4E242779AF0063BA75 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F472B4D242779AF0063BA75 /* UserService.swift */; };
+		7F472B5124277AB00063BA75 /* PhotoUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F472B5024277AB00063BA75 /* PhotoUser.swift */; };
 		B641A168C296076A2DA5CF89 /* Pods_QuotesScripturePost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BCB7B118E87F3D733C214D9 /* Pods_QuotesScripturePost.framework */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +65,7 @@
 		7F472B3D24263ACF0063BA75 /* CommunicationTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationTableCell.swift; sourceTree = "<group>"; };
 		7F472B48242746670063BA75 /* CommunicationTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationTableViewHeader.swift; sourceTree = "<group>"; };
 		7F472B4D242779AF0063BA75 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		7F472B5024277AB00063BA75 /* PhotoUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoUser.swift; sourceTree = "<group>"; };
 		82AD43EAB3AF2C9FFDD1364C /* Pods-QuotesScripturePost.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuotesScripturePost.release.xcconfig"; path = "Target Support Files/Pods-QuotesScripturePost/Pods-QuotesScripturePost.release.xcconfig"; sourceTree = "<group>"; };
 		E0BA0FA24CEA1865B7218A38 /* Pods-QuotesScripturePost.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuotesScripturePost.debug.xcconfig"; path = "Target Support Files/Pods-QuotesScripturePost/Pods-QuotesScripturePost.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -104,6 +106,7 @@
 				7F46362D241CB81600F50EE2 /* AppDelegate.swift */,
 				7F46362F241CB81600F50EE2 /* SceneDelegate.swift */,
 				7F463638241CB81800F50EE2 /* LaunchScreen.storyboard */,
+				7F472B4F24277A970063BA75 /* Model */,
 				7F472B4A242779470063BA75 /* Services */,
 				7F463653241E30CE00F50EE2 /* Helpers */,
 				7F463652241E2FF300F50EE2 /* Parts */,
@@ -233,6 +236,14 @@
 				7F472B4D242779AF0063BA75 /* UserService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		7F472B4F24277A970063BA75 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7F472B5024277AB00063BA75 /* PhotoUser.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		D944FDD153A2BA09757615A5 /* Frameworks */ = {
@@ -404,6 +415,7 @@
 				7F463630241CB81600F50EE2 /* SceneDelegate.swift in Sources */,
 				7F463646241CCAB000F50EE2 /* Constants.swift in Sources */,
 				7F472B3A2423B53D0063BA75 /* BellTableCell.swift in Sources */,
+				7F472B5124277AB00063BA75 /* PhotoUser.swift in Sources */,
 				7F472B3824239F3A0063BA75 /* PostQuotesVC.swift in Sources */,
 				7F472B49242746670063BA75 /* CommunicationTableViewHeader.swift in Sources */,
 				7F463655241E359300F50EE2 /* QSToolBar.swift in Sources */,
