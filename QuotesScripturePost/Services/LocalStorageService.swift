@@ -7,3 +7,14 @@
 //
 
 import Foundation
+
+class LocalStorageService {
+    
+    static func saveCurrentUser(user:PhotoUser) {
+        
+        let defaults = UserDefaults.standard
+        
+        defaults.set(user.userID, forKey: "storedUserId")
+        defaults.set(user.username, forKey: "storedUsername")
+    }
+}
