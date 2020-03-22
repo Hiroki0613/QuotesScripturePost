@@ -17,3 +17,10 @@ enum SFSymbols {
     static let share = "square.and.arrow.up.fill"
     static let post = "square.and.pencil"
 }
+
+struct Constants {
+    struct LocalStorage {
+        static let storedUsername = "storedUsername"
+        static let storedUserId = "storedUserId"
+    }
+}
