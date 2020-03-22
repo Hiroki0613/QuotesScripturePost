@@ -54,7 +54,7 @@ class HomeVC: UIViewController {
     @objc func pushLoginVC() {
         //モーダルでの画面遷移、遷移先は全画面に変更
         //暫定的にCreateProfileVCへ画面遷移を変更、UI確認後にLoginVCへ戻すこと
-        let loginVC = CreateProfileVC()
+        let loginVC = LoginVC()
         loginVC.modalPresentationStyle = .fullScreen
         self.present(loginVC, animated: true, completion: nil)
     }

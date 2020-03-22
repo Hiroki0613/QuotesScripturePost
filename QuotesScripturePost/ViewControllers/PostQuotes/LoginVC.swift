@@ -111,6 +111,7 @@ extension LoginVC: FUIAuthDelegate {
                     let createProfileVC = CreateProfileVC()
                     createProfileVC.modalPresentationStyle = .fullScreen
                     self.present(createProfileVC, animated: true, completion: nil)
+                    print("hirohiroNil")
                     
                     
                 } else {
@@ -120,6 +121,7 @@ extension LoginVC: FUIAuthDelegate {
                           let selectPostImageVC = SelectPostImageVC()
                           selectPostImageVC.modalPresentationStyle = .fullScreen
                           self.present(selectPostImageVC, animated: true, completion: nil)
+                    print("hirohiroData")
                 }
             }
         }
