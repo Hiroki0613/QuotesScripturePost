@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class CreateProfileVC: UIViewController {
     
@@ -57,6 +58,31 @@ class CreateProfileVC: UIViewController {
     }
     
     @objc func createUser() {
-        print("createUserボタンが押された")
+        //uidを取得するため、現在のユーザーがログインしているかを確認
+        guard let authCurrentUser = Auth.auth().currentUser else {
+            print("ユーザーはログインしていません")
+            return
+        }
+        // ユーザー名が適切かを確認する。
+        let username = createUserTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard username != nil && username != "" else {
+            print("ユーザー名が入力されていません")
+            return
+        }
+        //ユーザープロフィールを作成する
+        UserService.createUserProfile(userId: authCurrentUser.uid, username: username!) { (u) in
+            //すでにユーザーが作成されているのかを確認する
+            if u == nil {
+                print("プロフィール作成でエラーが発生しました")
+            } else {
+                //ユーザー情報を保存
+                LocalStorageService.saveCurrentUser(user: u!)
+
+                //モーダルで投稿画面に遷移、遷移先は全画面に変更
+                let selectPostImageVC = SelectPostImageVC()
+                selectPostImageVC.modalPresentationStyle = .fullScreen
+                self.present(selectPostImageVC, animated: true, completion: nil)
+            }
+        }
     }
 }

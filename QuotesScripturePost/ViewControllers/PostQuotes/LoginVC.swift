@@ -96,7 +96,6 @@ extension LoginVC: FUIAuthDelegate {
     func authUI(_ authUI: FUIAuth, didSignInWith authDataResult: AuthDataResult?, error: Error?) {
         
         guard error == nil else {
-            print("エラーが発生しました")
             return
         }
         
