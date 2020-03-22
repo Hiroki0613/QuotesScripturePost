@@ -10,11 +10,33 @@ import Foundation
 
 class LocalStorageService {
     
+    //ユーザー情報の記録
     static func saveCurrentUser(user:PhotoUser) {
-        
         let defaults = UserDefaults.standard
-        
-        defaults.set(user.userID, forKey: "storedUserId")
-        defaults.set(user.username, forKey: "storedUsername")
+        defaults.set(user.userID, forKey: Constants.LocalStorage.storedUserId)
+        defaults.set(user.username, forKey: Constants.LocalStorage.storedUsername)
+    }
+    
+    
+    //現在のユーザー情報を確認、取得
+    static func loadCurrentUser() -> PhotoUser? {
+        let defaults = UserDefaults.standard
+        let userId = defaults.value(forKey: Constants.LocalStorage.storedUserId) as? String
+        let username = defaults.value(forKey: Constants.LocalStorage.storedUsername) as? String
+        //ユーザー情報を取得できない場合はnilをreturn
+        guard userId != nil || username != nil else {
+            return nil
+        }
+        //ユーザー情報をreturn
+        let u = PhotoUser(userID: userId!, username: username!)
+        return u
+    }
+    
+    
+    //ユーザー情報の削除
+    static func clearCurrentUser() {
+        let defaults = UserDefaults.standard
+        defaults.set(nil, forKey: Constants.LocalStorage.storedUserId)
+        defaults.set(nil, forKey: Constants.LocalStorage.storedUsername)
     }
 }
