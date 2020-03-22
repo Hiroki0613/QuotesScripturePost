@@ -89,7 +89,6 @@ class LoginVC: UIViewController {
         //Home画面に戻る
         dismiss(animated: true, completion: nil)
     }
-
 }
 
 
@@ -101,15 +100,23 @@ extension LoginVC: FUIAuthDelegate {
             return
         }
         
-        //ログイン(すでにログインしている場合は、この動作をパス)を追加予定
+        let user = authDataResult?.user
         
-        
-        //認証OK
-        //ログイン後に、投稿画面に遷移
-        //モーダルで投稿画面に遷移、遷移先は全画面に変更
-              let selectPostImageVC = SelectPostImageVC()
-              selectPostImageVC.modalPresentationStyle = .fullScreen
-              self.present(selectPostImageVC, animated: true, completion: nil)
-        
+        //すでにログインしている場合は、この動作をパス
+        if let user = user {
+            UserService.getUserProfile(userId: user.uid) { (u) in
+    
+                if u == nil {
+                    //プロフィールが無いので、CreateProfileVCに遷移して、作成 (後日作成予定)
+                } else {
+                    LocalStorageService.saveCurrentUser(user: u!)
+                    //プロフィール情報があるので、投稿画面へ遷移
+                    //モーダルで投稿画面に遷移、遷移先は全画面に変更
+                          let selectPostImageVC = SelectPostImageVC()
+                          selectPostImageVC.modalPresentationStyle = .fullScreen
+                          self.present(selectPostImageVC, animated: true, completion: nil)
+                }
+            }
+        }
     }
 }
