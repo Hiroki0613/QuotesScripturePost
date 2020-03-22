@@ -113,14 +113,9 @@
 		7F463651241E2FA000F50EE2 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				7F463631241CB81600F50EE2 /* HomeVC.swift */,
-				7F463641241CC10000F50EE2 /* BellVC.swift */,
-				7F463643241CC11500F50EE2 /* EditVC.swift */,
-				7F46364D241D0B9000F50EE2 /* LoginVC.swift */,
-				7F463656241E3A3400F50EE2 /* SelectPostImageVC.swift */,
-				7F46365C241FB19000F50EE2 /* SearchQuotesFromApiVC.swift */,
-				7F472B3724239F3A0063BA75 /* PostQuotesVC.swift */,
-				7F472B3B2425D7B70063BA75 /* CommunicationVC.swift */,
+				7F472B44242745C00063BA75 /* SelectByTab */,
+				7F472B45242745E00063BA75 /* PostQuotes */,
+				7F472B46242746090063BA75 /* Comment */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -128,15 +123,11 @@
 		7F463652241E2FF300F50EE2 /* Parts */ = {
 			isa = PBXGroup;
 			children = (
-				7F46364F241D180700F50EE2 /* QSButton.swift */,
-				7F46364B241CFF6800F50EE2 /* PostButton.swift */,
-				7F463649241CE41200F50EE2 /* HomePostTableCell.swift */,
-				7F472B35242391860063BA75 /* SearchQuotesCell.swift */,
-				7F472B392423B53D0063BA75 /* BellTableCell.swift */,
-				7F463654241E359300F50EE2 /* QSToolBar.swift */,
-				7F46365E241FB40400F50EE2 /* QSLabel.swift */,
-				7F463660241FB72300F50EE2 /* QSTextField.swift */,
-				7F472B3D24263ACF0063BA75 /* CommunicationTableCell.swift */,
+				7F472B43242745B10063BA75 /* TextField */,
+				7F472B42242745A80063BA75 /* Label */,
+				7F472B412427459C0063BA75 /* ToolBar */,
+				7F472B40242745870063BA75 /* Button */,
+				7F472B3F2427455C0063BA75 /* TableViewCell */,
 			);
 			path = Parts;
 			sourceTree = "<group>";
@@ -147,6 +138,79 @@
 				7F463645241CCAB000F50EE2 /* Constants.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		7F472B3F2427455C0063BA75 /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				7F463649241CE41200F50EE2 /* HomePostTableCell.swift */,
+				7F472B392423B53D0063BA75 /* BellTableCell.swift */,
+				7F472B3D24263ACF0063BA75 /* CommunicationTableCell.swift */,
+				7F472B35242391860063BA75 /* SearchQuotesCell.swift */,
+			);
+			path = TableViewCell;
+			sourceTree = "<group>";
+		};
+		7F472B40242745870063BA75 /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				7F46364F241D180700F50EE2 /* QSButton.swift */,
+				7F46364B241CFF6800F50EE2 /* PostButton.swift */,
+			);
+			path = Button;
+			sourceTree = "<group>";
+		};
+		7F472B412427459C0063BA75 /* ToolBar */ = {
+			isa = PBXGroup;
+			children = (
+				7F463654241E359300F50EE2 /* QSToolBar.swift */,
+			);
+			path = ToolBar;
+			sourceTree = "<group>";
+		};
+		7F472B42242745A80063BA75 /* Label */ = {
+			isa = PBXGroup;
+			children = (
+				7F46365E241FB40400F50EE2 /* QSLabel.swift */,
+			);
+			path = Label;
+			sourceTree = "<group>";
+		};
+		7F472B43242745B10063BA75 /* TextField */ = {
+			isa = PBXGroup;
+			children = (
+				7F463660241FB72300F50EE2 /* QSTextField.swift */,
+			);
+			path = TextField;
+			sourceTree = "<group>";
+		};
+		7F472B44242745C00063BA75 /* SelectByTab */ = {
+			isa = PBXGroup;
+			children = (
+				7F463631241CB81600F50EE2 /* HomeVC.swift */,
+				7F463641241CC10000F50EE2 /* BellVC.swift */,
+				7F463643241CC11500F50EE2 /* EditVC.swift */,
+			);
+			path = SelectByTab;
+			sourceTree = "<group>";
+		};
+		7F472B45242745E00063BA75 /* PostQuotes */ = {
+			isa = PBXGroup;
+			children = (
+				7F46364D241D0B9000F50EE2 /* LoginVC.swift */,
+				7F463656241E3A3400F50EE2 /* SelectPostImageVC.swift */,
+				7F46365C241FB19000F50EE2 /* SearchQuotesFromApiVC.swift */,
+				7F472B3724239F3A0063BA75 /* PostQuotesVC.swift */,
+			);
+			path = PostQuotes;
+			sourceTree = "<group>";
+		};
+		7F472B46242746090063BA75 /* Comment */ = {
+			isa = PBXGroup;
+			children = (
+				7F472B3B2425D7B70063BA75 /* CommunicationVC.swift */,
+			);
+			path = Comment;
 			sourceTree = "<group>";
 		};
 		D944FDD153A2BA09757615A5 /* Frameworks */ = {
