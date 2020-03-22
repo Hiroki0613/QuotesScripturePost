@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseUI
 
 class LoginVC: UIViewController {
     
@@ -52,14 +53,25 @@ class LoginVC: UIViewController {
     }
     
     @objc func loginToPost() {
-        //ログイン後に、投稿画面に遷移
         
-        //ログイン(すでにログインしている場合は、この動作をパス)
+        let authUI = FUIAuth.defaultAuthUI()
         
-        //モーダルで投稿画面に遷移、遷移先は全画面に変更
-        let selectPostImageVC = SelectPostImageVC()
-        selectPostImageVC.modalPresentationStyle = .fullScreen
-        self.present(selectPostImageVC, animated: true, completion: nil)
+        guard let authui = authUI else { return }
+        authui.delegate = self
+        //Eメールでのログインを実装
+        authui.providers = [FUIEmailAuth()]
+        
+        //firebaseのauthViewControllerを実装
+        let authViewController = authui.authViewController()
+        
+        //FirebaseUIのログイン画面に遷移
+        present(authViewController, animated: true, completion: nil)
+        
+        
+            
+        
+
+        
         
         
     }
@@ -85,5 +97,26 @@ class LoginVC: UIViewController {
         dismiss(animated: true, completion: nil)
     }
 
+}
 
+
+extension LoginVC: FUIAuthDelegate {
+    func authUI(_ authUI: FUIAuth, didSignInWith authDataResult: AuthDataResult?, error: Error?) {
+        
+        guard error == nil else {
+            print("エラーが発生しました")
+            return
+        }
+        
+        //ログイン(すでにログインしている場合は、この動作をパス)を追加予定
+        
+        
+        //認証OK
+        //ログイン後に、投稿画面に遷移
+        //モーダルで投稿画面に遷移、遷移先は全画面に変更
+              let selectPostImageVC = SelectPostImageVC()
+              selectPostImageVC.modalPresentationStyle = .fullScreen
+              self.present(selectPostImageVC, animated: true, completion: nil)
+        
+    }
 }
