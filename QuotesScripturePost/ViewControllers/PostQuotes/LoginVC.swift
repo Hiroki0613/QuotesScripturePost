@@ -66,14 +66,6 @@ class LoginVC: UIViewController {
         
         //FirebaseUIのログイン画面に遷移
         present(authViewController, animated: true, completion: nil)
-        
-        
-            
-        
-
-        
-        
-        
     }
     
     
