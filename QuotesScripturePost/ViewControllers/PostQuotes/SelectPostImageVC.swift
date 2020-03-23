@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SelectPostImageVC: UIViewController {
     
@@ -50,6 +51,8 @@ class SelectPostImageVC: UIViewController {
         self.view.addSubview(logoutButton)
         
         takePhotoButton.addTarget(self, action: #selector(takeAndAddPhoto), for: .touchUpInside)
+        
+        logoutButton.addTarget(self, action: #selector(pushLogoutButton), for: .touchUpInside)
         
         takePhotoButton.translatesAutoresizingMaskIntoConstraints = false
         useAlbumButton.translatesAutoresizingMaskIntoConstraints = false
@@ -118,7 +121,27 @@ class SelectPostImageVC: UIViewController {
         
     }
     
+    
     @objc func takeAndAddPhoto() {
+        
+    }
+    
+    
+    @objc func pushLogoutButton() {
+        
+        do {
+            //ログアウト
+            try Auth.auth().signOut()
+            // ローカルストレージを消去
+            LocalStorageService.clearCurrentUser()
+            //LoginVC(ひとつ前)へ画面遷移
+            dismiss(animated: true, completion: nil)
+
+        } catch {
+            print("ログアウト出来ません")
+        }
+        
+        
         
     }
     
