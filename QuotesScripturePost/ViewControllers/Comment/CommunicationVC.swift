@@ -50,7 +50,7 @@ class CommunicationVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-        communicationTextField.delegate = self
+//        communicationTextField.delegate = self
 //        configureScrollView()
         set()
         configurePostView()
@@ -340,7 +340,7 @@ extension CommunicationVC: UITextFieldDelegate {
     
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        communicationTextField.becomeFirstResponder()
+        communicationTextField.resignFirstResponder()
     }
     
     // 改行でキーボードを隠す
