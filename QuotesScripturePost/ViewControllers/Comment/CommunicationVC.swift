@@ -36,10 +36,11 @@ class CommunicationVC: UIViewController {
     
     //キーボードを開いた時に、重ならないようにViewをずらすために設定
     let scrollView = UIScrollView()
+//    let screenSize = UIScreen.main.bounds.size
 
-    // Screenの高さ
+//    // Screenの高さ
     var screenHeight:CGFloat!
-    // Screenの幅
+//    // Screenの幅
     var screenWidth:CGFloat!
     
     //ツールバーの設定
@@ -55,16 +56,17 @@ class CommunicationVC: UIViewController {
         configurefCommunicationTableView()
         configureToolbar()
         configureTextFieldAndPostCommunicationButton()
+    
     }
     
     override func viewWillAppear(_ animated: Bool) {
            super.viewWillAppear(animated)
-//        monitorTextFieldAppear()
+           monitorTextFieldAppear()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-//        monitorTextFieldDisappear()
+        monitorTextFieldDisappear()
     }
     
     
@@ -107,33 +109,33 @@ class CommunicationVC: UIViewController {
         
         NSLayoutConstraint.activate([
             //Userのイメージ画像のcell定義
-            userImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: padding),
-            userImage.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
+            userImage.topAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.topAnchor, constant: padding),
+            userImage.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: padding),
             userImage.heightAnchor.constraint(equalToConstant: 40),
             userImage.widthAnchor.constraint(equalToConstant: 40),
             
             //Userの名前のcell定義
-            userNameLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: padding + 10),
+            userNameLabel.topAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.topAnchor, constant: padding + 10),
             userNameLabel.leadingAnchor.constraint(equalTo: userImage.trailingAnchor, constant: 10),
             userNameLabel.heightAnchor.constraint(equalToConstant: 20),
             userNameLabel.widthAnchor.constraint(equalToConstant: 100),
             
             //Userの投稿日時を定義
-            postDateLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: padding + 10),
-            postDateLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            postDateLabel.topAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.topAnchor, constant: padding + 10),
+            postDateLabel.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -padding),
             postDateLabel.heightAnchor.constraint(equalToConstant: 20),
             postDateLabel.widthAnchor.constraint(equalToConstant: 200),
             
             //投稿画像を定義
             postImage.topAnchor.constraint(equalTo: userImage.bottomAnchor, constant: 10),
-            postImage.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            postImage.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            postImage.heightAnchor.constraint(equalToConstant: view.bounds.width),
-            postImage.widthAnchor.constraint(equalToConstant: view.bounds.width),
+            postImage.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            postImage.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            postImage.heightAnchor.constraint(equalToConstant: scrollView.bounds.width),
+            postImage.widthAnchor.constraint(equalToConstant: scrollView.bounds.width),
             
             //ハートボタンを定義
             heartButton.topAnchor.constraint(equalTo: postImage.bottomAnchor, constant: 10),
-            heartButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
+            heartButton.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: padding),
             heartButton.heightAnchor.constraint(equalToConstant: 20),
             heartButton.widthAnchor.constraint(equalToConstant: 20),
             
@@ -173,17 +175,18 @@ class CommunicationVC: UIViewController {
         NSLayoutConstraint.activate([
             //communicationTableViewを定義
             communicationTableView.topAnchor.constraint(equalTo: heartButton.bottomAnchor, constant: padding),
-            communicationTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
-            communicationTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
-            communicationTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            communicationTableView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: padding),
+            communicationTableView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -padding),
+            communicationTableView.bottomAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
     
     
     func configureTextFieldAndPostCommunicationButton() {
-        communicationTextField.delegate = self
+        
         scrollView.addSubview(communicationTextField)
         scrollView.addSubview(postCommentButton)
+        communicationTextField.delegate = self
         
         communicationTextField.translatesAutoresizingMaskIntoConstraints = false
         postCommentButton.translatesAutoresizingMaskIntoConstraints = false
@@ -194,12 +197,12 @@ class CommunicationVC: UIViewController {
         
         NSLayoutConstraint.activate([
             communicationTextField.bottomAnchor.constraint(equalTo: toolbar.topAnchor,constant: -padding),
-            communicationTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
+            communicationTextField.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: padding),
             communicationTextField.trailingAnchor.constraint(equalTo: postCommentButton.leadingAnchor, constant: -padding),
             communicationTextField.heightAnchor.constraint(equalToConstant: 50),
             
             postCommentButton.bottomAnchor.constraint(equalTo: toolbar.topAnchor,constant: -padding),
-            postCommentButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            postCommentButton.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -padding),
             postCommentButton.widthAnchor.constraint(equalToConstant: 50),
             postCommentButton.heightAnchor.constraint(equalToConstant: 50)
         ])
@@ -209,7 +212,7 @@ class CommunicationVC: UIViewController {
     func configureScrollView () {
         scrollView.delegate = self
         let screenSize: CGRect = UIScreen.main.bounds
-        
+
         screenWidth = screenSize.width
         screenHeight = screenSize.height
         // 表示窓のサイズと位置を設定
@@ -222,18 +225,25 @@ class CommunicationVC: UIViewController {
         // ビューに追加
         self.view.addSubview(scrollView)
     }
-    
+
     
     //TextFieleの動きを監視する(開く)
     func monitorTextFieldAppear() {
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(CommunicationVC.keyboardWillShow(_:)),
-                                               name: UIResponder.keyboardWillShowNotification,
-                                               object: nil)
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(CommunicationVC.keyboardWillHide(_:)) ,
-                                               name: UIResponder.keyboardDidHideNotification,
-                                               object: nil)
+        
+        //キーボードが出てきたときに、textField、送信ボタンが同時に上にスライドするコード
+        NotificationCenter.default.addObserver(self, selector: #selector(CommunicationVC.keyboardWillShow(_ :)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        //キーボードが閉じる時に、textFieldの高さが可変になるもの。
+        NotificationCenter.default.addObserver(self, selector: #selector(CommunicationVC.keyboardWillHide(_ :)), name: UIResponder.keyboardDidHideNotification, object: nil)
+        
+//        NotificationCenter.default.addObserver(self,
+//                                               selector: #selector(CommunicationVC.keyboardWillShow(_:)),
+//                                               name: UIResponder.keyboardWillShowNotification,
+//                                               object: nil)
+//        NotificationCenter.default.addObserver(self,
+//                                               selector: #selector(CommunicationVC.keyboardWillHide(_:)) ,
+//                                               name: UIResponder.keyboardWillHideNotification,
+//                                               object: nil)
     }
 
     
@@ -249,7 +259,7 @@ class CommunicationVC: UIViewController {
     
     
     func configureToolbar() {
-        scrollView.addSubview(toolbar)
+        view.addSubview(toolbar)
         toolbar.translatesAutoresizingMaskIntoConstraints = false
         
         //戻るボタンの実装
@@ -313,42 +323,78 @@ extension CommunicationVC:UITableViewDelegate,UITableViewDataSource {
 }
 
 
-extension CommunicationVC: UIScrollViewDelegate {
-    //scrollViewDelegateを宣言
-}
+//extension CommunicationVC: UIScrollViewDelegate {
+//    //scrollViewDelegateを宣言
+//}
 
 
 extension CommunicationVC: UITextFieldDelegate {
     
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        communicationTextField.resignFirstResponder()
+    }
+    
     // 改行でキーボードを隠す
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//        textField.resignFirstResponder()
         self.view.endEditing(true)
         return true
     }
     
     
-    @objc func keyboardWillShow(_ notification: Notification) {
+    @objc func keyboardWillShow(_ notification: NSNotification) {
         
         let info = notification.userInfo!
-        
+
         let keyboardFrame = (info[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
-        
+
         // bottom of textField
         let bottomTextField = communicationTextField.frame.origin.y + communicationTextField.frame.height
         // top of keyboard
         let topKeyboard = screenHeight - keyboardFrame.size.height
         // 重なり
         let distance = bottomTextField - topKeyboard
-        
+
         if distance >= 0 {
             // scrollViewのコンテツを上へオフセット + 50.0(追加のオフセット)
             scrollView.contentOffset.y = distance + 50.0
         }
+        
+        //キーボードの高さを取得
+//        let keyboardHeight = ((notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as Any) as AnyObject).cgRectValue.height
+//
+        //キーボードの高さを取得
+//        let keyboardHeight = ((notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as Any) as AnyObject).cgRectValue.height
+//
+//
+//
+//        //上にスライドした後の高さを決めたい。
+//        // フレームの高さ - キーボードの高さ - messageTextFieldの高さ
+//        communicationTextField.frame.origin.y = screenSize.height - keyboardHeight - communicationTextField.frame.height
+//        postCommentButton.frame.origin.y = screenSize.height - keyboardHeight - postCommentButton.frame.height
+//
     }
     
     
-    @objc func keyboardWillHide(_ notification: Notification) {
+    @objc func keyboardWillHide(_ notification: NSNotification) {
+        //下へスライドした後の高さを決めたい。
+        //今回はキーボードが消えるので、キーボードの高さは考慮しない。
+        //スクリーンの高さ - messageTextFieldの高さ
         scrollView.contentOffset.y = 0
+        
+//        communicationTextField.frame.origin.y = screenSize.height - communicationTextField.frame.height
+        
+//        guard let rect = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue,
+            
+            
+            //キーボードが下がる時間をdurationとして取得
+//            let duration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? TimeInterval else {return}
+        
+//        UIView.animate(withDuration: duration) {
+//            let transform = CGAffineTransform(translationX: 0, y: 0)
+//            self.view.transform = transform
+//        }
     }
 }
 
