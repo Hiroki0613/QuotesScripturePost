@@ -50,7 +50,6 @@ class CommunicationVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-//        communicationTextField.delegate = self
 //        configureScrollView()
         set()
         configurePostView()
@@ -194,7 +193,7 @@ class CommunicationVC: UIViewController {
         
         view.addSubview(communicationTextField)
         view.addSubview(postCommentButton)
-//        communicationTextField.delegate = self
+        communicationTextField.delegate = self
         
         communicationTextField.translatesAutoresizingMaskIntoConstraints = false
         postCommentButton.translatesAutoresizingMaskIntoConstraints = false

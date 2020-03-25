@@ -36,6 +36,7 @@
 		7F472B5324277F2B0063BA75 /* LocalStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F472B5224277F2B0063BA75 /* LocalStorageService.swift */; };
 		7F472B55242786B20063BA75 /* CreateProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F472B54242786B20063BA75 /* CreateProfileVC.swift */; };
 		7F472B572427A9680063BA75 /* PostData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F472B562427A9680063BA75 /* PostData.swift */; };
+		7F472B7B242B757E0063BA75 /* PhotoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F472B7A242B757E0063BA75 /* PhotoService.swift */; };
 		B641A168C296076A2DA5CF89 /* Pods_QuotesScripturePost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BCB7B118E87F3D733C214D9 /* Pods_QuotesScripturePost.framework */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +73,7 @@
 		7F472B5224277F2B0063BA75 /* LocalStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageService.swift; sourceTree = "<group>"; };
 		7F472B54242786B20063BA75 /* CreateProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileVC.swift; sourceTree = "<group>"; };
 		7F472B562427A9680063BA75 /* PostData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostData.swift; sourceTree = "<group>"; };
+		7F472B7A242B757E0063BA75 /* PhotoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoService.swift; sourceTree = "<group>"; };
 		82AD43EAB3AF2C9FFDD1364C /* Pods-QuotesScripturePost.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuotesScripturePost.release.xcconfig"; path = "Target Support Files/Pods-QuotesScripturePost/Pods-QuotesScripturePost.release.xcconfig"; sourceTree = "<group>"; };
 		E0BA0FA24CEA1865B7218A38 /* Pods-QuotesScripturePost.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuotesScripturePost.debug.xcconfig"; path = "Target Support Files/Pods-QuotesScripturePost/Pods-QuotesScripturePost.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -242,6 +244,7 @@
 			children = (
 				7F472B4D242779AF0063BA75 /* UserService.swift */,
 				7F472B5224277F2B0063BA75 /* LocalStorageService.swift */,
+				7F472B7A242B757E0063BA75 /* PhotoService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -425,6 +428,7 @@
 				7F472B572427A9680063BA75 /* PostData.swift in Sources */,
 				7F46365F241FB40400F50EE2 /* QSLabel.swift in Sources */,
 				7F463630241CB81600F50EE2 /* SceneDelegate.swift in Sources */,
+				7F472B7B242B757E0063BA75 /* PhotoService.swift in Sources */,
 				7F463646241CCAB000F50EE2 /* Constants.swift in Sources */,
 				7F472B3A2423B53D0063BA75 /* BellTableCell.swift in Sources */,
 				7F472B5124277AB00063BA75 /* PhotoUser.swift in Sources */,
