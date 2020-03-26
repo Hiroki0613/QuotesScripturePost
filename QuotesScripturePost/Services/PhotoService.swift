@@ -12,6 +12,9 @@ import FirebaseDatabase
 import FirebaseAuth
 
 class PhotoService {
+    
+    
+    
     static func savePhoto(image: UIImage) {
         //圧縮率を0.1
         let photoData = image.jpegData(compressionQuality: 0.1)

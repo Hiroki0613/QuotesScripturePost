@@ -10,6 +10,11 @@ import UIKit
 
 class EditVC: UIViewController {
     
+    //Userdefaultでユーザ名
+    //firebaseでプロフィール画像を登録
+    //この２つを紐付けて、投稿アプリを作成していく。
+    
+    
     let userImageView = UIImageView()
     let changeProfileButton = QSButton(title: "プロフィール画像の変更")
     let changeUserNameButton = QSButton(title: "ユーザー名の変更")
