@@ -7,7 +7,9 @@
 //
 
 import Foundation
+import FirebaseAuth
 import FirebaseDatabase
+import FirebaseStorage
 
 class UserService {
     
@@ -31,6 +33,46 @@ class UserService {
             }
         }
     }
+    
+    
+    static func saveUserProfileImage(image: UIImage) {
+        //圧縮率を0.1
+        let profileData = image.jpegData(compressionQuality: 0.1)
+        
+        guard let profiledata = profileData else { return }
+        
+        //ストレージへ保存準備
+        let userid = Auth.auth().currentUser!.uid
+        let ref = Storage.storage().reference().child("profile/\(userid).jpg")
+        
+         //ストレージへ保存
+        let uploadTask = ref.putData(profiledata, metadata: nil) { (metadata, error) in
+            if let error = error {
+                //アップロード中にエラー発生
+            } else {
+            //アップロード成功、データベースを作成
+                
+            }
+        }
+    }
+    
+    
+    private static func createProfileDatabaseEntry(ref:StorageReference) {
+        ref.downloadURL { (url, error) in
+            if let error = error {
+                return
+            } else {
+                let user = LocalStorageService.loadCurrentUser()
+                
+                guard user != nil else { return }
+                
+                
+            }
+        }
+    }
+    
+    
+    
     
     
     //ユーザー情報を取得(ログイン時に使用)

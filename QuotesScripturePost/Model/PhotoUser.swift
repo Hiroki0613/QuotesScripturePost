@@ -12,4 +12,5 @@ import Foundation
 struct PhotoUser {
     var userID:String?
     var username:String?
+    var userProfilePhotoStorage:String?
 }

@@ -13,6 +13,7 @@ class CreateProfileVC: UIViewController {
     
     let createUserLabel = QSLabel(textAlignment: .center, string: "Welcome \n Please set a username")
     let createUserTextField = QSTextField()
+    let createUserProfileButton = QSButton(title: "Select your image profile")
     let createUserButton = QSButton(title: "Create!")
 
     
@@ -26,15 +27,18 @@ class CreateProfileVC: UIViewController {
         view.backgroundColor = .systemBackground
         view.addSubview(createUserLabel)
         view.addSubview(createUserTextField)
+        view.addSubview(createUserProfileButton)
         view.addSubview(createUserButton)
         
         //改行をして全文を表示
         createUserLabel.numberOfLines = 0
         
         createUserButton.addTarget(self, action: #selector(createUser), for: .touchUpInside)
+        createUserProfileButton.addTarget(self, action: #selector(createProfileImage), for: .touchUpInside)
         
         createUserLabel.translatesAutoresizingMaskIntoConstraints = false
         createUserTextField.translatesAutoresizingMaskIntoConstraints = false
+        createUserProfileButton.translatesAutoresizingMaskIntoConstraints = false
         createUserButton.translatesAutoresizingMaskIntoConstraints = false
         
         let padding:CGFloat = 40
@@ -49,13 +53,24 @@ class CreateProfileVC: UIViewController {
             createUserTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
             createUserTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
             createUserTextField.heightAnchor.constraint(equalToConstant: 50),
+                        
+            createUserProfileButton.topAnchor.constraint(equalTo: createUserTextField.bottomAnchor, constant: padding),
+            createUserProfileButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
+            createUserProfileButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            createUserProfileButton.heightAnchor.constraint(equalToConstant: 50),
             
-            createUserButton.topAnchor.constraint(equalTo: createUserTextField.bottomAnchor, constant: padding),
+            createUserButton.topAnchor.constraint(equalTo: createUserProfileButton.bottomAnchor, constant: padding),
             createUserButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
             createUserButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
             createUserButton.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
+    
+    @objc func createProfileImage() {
+        //ここに写真選択関係のポップアップViewを出す
+        //UserProfileはプリセットも用意しておく
+    }
+    
     
     @objc func createUser() {
         //uidを取得するため、現在のユーザーがログインしているかを確認

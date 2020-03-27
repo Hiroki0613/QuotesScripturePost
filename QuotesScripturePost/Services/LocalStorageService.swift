@@ -15,6 +15,11 @@ class LocalStorageService {
         let defaults = UserDefaults.standard
         defaults.set(user.userID, forKey: Constants.LocalStorage.storedUserId)
         defaults.set(user.username, forKey: Constants.LocalStorage.storedUsername)
+         }
+    
+    static func saveUserProfileImage(user:PhotoUser) {
+        let defaults = UserDefaults.standard
+        defaults.set(user.userProfilePhotoStorage, forKey: Constants.LocalStorage.sotredUserPhoto)
     }
     
     
@@ -23,12 +28,13 @@ class LocalStorageService {
         let defaults = UserDefaults.standard
         let userId = defaults.value(forKey: Constants.LocalStorage.storedUserId) as? String
         let username = defaults.value(forKey: Constants.LocalStorage.storedUsername) as? String
+        let userProfileImageStorage = defaults.value(forKey: Constants.LocalStorage.sotredUserPhoto) as? String
         //ユーザー情報を取得できない場合はnilをreturn
-        guard userId != nil || username != nil else {
+        guard userId != nil || username != nil || userProfileImageStorage != nil else {
             return nil
         }
         //ユーザー情報をreturn
-        let u = PhotoUser(userID: userId!, username: username!)
+        let u = PhotoUser(userID: userId!, username: username!, userProfilePhotoStorage: userProfileImageStorage! )
         return u
     }
     
