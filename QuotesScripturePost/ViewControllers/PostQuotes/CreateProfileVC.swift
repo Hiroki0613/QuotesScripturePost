@@ -11,7 +11,7 @@ import FirebaseAuth
 
 class CreateProfileVC: UIViewController {
     
-    let createUserImage = UIImageView()
+    var createUserImage = UIImageView()
     let createUserLabel = QSLabel(textAlignment: .center, string: "Welcome \n Please set a username")
     let createUserTextField = QSTextField()
     let createUserProfileButton = QSButton(title: "Select your image profile")
@@ -79,6 +79,7 @@ class CreateProfileVC: UIViewController {
     
     @objc func createProfileImage() {
         //ここに写真選択関係のポップアップViewを出す
+        showActionSheet()
         //UserProfileはプリセットも用意しておく
     }
     
@@ -111,4 +112,53 @@ class CreateProfileVC: UIViewController {
             }
         }
     }
+    
+    
+    func showActionSheet() {
+        //アクションシート作成
+        let actionSheet = UIAlertController(title: "Select Photo", message: "Please select a source", preferredStyle: .actionSheet)
+        
+        //カメラの使用許可
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            let cameraAction = UIAlertAction(title: "Camera", style: .default) { (action) in
+                self.showImagePicker(type: .camera)
+            }
+            actionSheet.addAction(cameraAction)
+        }
+        
+        //アルバムの使用
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+            let libraryAction = UIAlertAction(title: "Photo Library", style: .default) { (action) in
+                self.showImagePicker(type: .photoLibrary)
+            }
+            actionSheet.addAction(libraryAction)
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        actionSheet.addAction(cancelAction)
+        
+        present(actionSheet, animated: true, completion: nil)
+    }
+    
+    
+    func showImagePicker(type: UIImagePickerController.SourceType) {
+        let imagePicker = UIImagePickerController()
+        imagePicker.sourceType = type
+        imagePicker.delegate = self
+        present(imagePicker, animated: true, completion: nil)
+    }
 }
+
+extension CreateProfileVC: UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let selectedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            createUserImage.image = selectedImage
+        }
+        picker.dismiss(animated: true, completion: nil)
+    }
+}
+
+
