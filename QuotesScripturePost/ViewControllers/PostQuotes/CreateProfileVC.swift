@@ -37,6 +37,10 @@ class CreateProfileVC: UIViewController {
         //改行をして全文を表示
         createUserLabel.numberOfLines = 0
         
+        //TextFieldの機能を設定
+        createUserTextField.returnKeyType = .done
+        createUserTextField.delegate = self
+        
         createUserButton.addTarget(self, action: #selector(createUser), for: .touchUpInside)
         createUserProfileButton.addTarget(self, action: #selector(createProfileImage), for: .touchUpInside)
         
@@ -148,6 +152,7 @@ class CreateProfileVC: UIViewController {
     }
 }
 
+
 extension CreateProfileVC: UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
@@ -161,4 +166,15 @@ extension CreateProfileVC: UIImagePickerControllerDelegate,UINavigationControlle
     }
 }
 
+
+extension CreateProfileVC: UITextFieldDelegate {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        createUserTextField.resignFirstResponder()
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+}
 
