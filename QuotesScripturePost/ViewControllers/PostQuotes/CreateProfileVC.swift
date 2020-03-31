@@ -11,6 +11,7 @@ import FirebaseAuth
 
 class CreateProfileVC: UIViewController {
     
+    let createUserImage = UIImageView()
     let createUserLabel = QSLabel(textAlignment: .center, string: "Welcome \n Please set a username")
     let createUserTextField = QSTextField()
     let createUserProfileButton = QSButton(title: "Select your image profile")
@@ -25,10 +26,13 @@ class CreateProfileVC: UIViewController {
     
     func configure() {
         view.backgroundColor = .systemBackground
+        view.addSubview(createUserImage)
         view.addSubview(createUserLabel)
         view.addSubview(createUserTextField)
         view.addSubview(createUserProfileButton)
         view.addSubview(createUserButton)
+        
+        createUserImage.backgroundColor = .systemPink
         
         //改行をして全文を表示
         createUserLabel.numberOfLines = 0
@@ -36,6 +40,7 @@ class CreateProfileVC: UIViewController {
         createUserButton.addTarget(self, action: #selector(createUser), for: .touchUpInside)
         createUserProfileButton.addTarget(self, action: #selector(createProfileImage), for: .touchUpInside)
         
+        createUserImage.translatesAutoresizingMaskIntoConstraints = false
         createUserLabel.translatesAutoresizingMaskIntoConstraints = false
         createUserTextField.translatesAutoresizingMaskIntoConstraints = false
         createUserProfileButton.translatesAutoresizingMaskIntoConstraints = false
@@ -44,6 +49,12 @@ class CreateProfileVC: UIViewController {
         let padding:CGFloat = 40
         
         NSLayoutConstraint.activate([
+            createUserImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: padding),
+            createUserImage.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: view.frame.size.width/2-100),
+            createUserImage.widthAnchor.constraint(equalToConstant: 200),
+            createUserImage.heightAnchor.constraint(equalToConstant: 200),
+            
+            
             createUserLabel.topAnchor.constraint(equalTo: view.centerYAnchor, constant: -view.frame.height/10),
             createUserLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
             createUserLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
