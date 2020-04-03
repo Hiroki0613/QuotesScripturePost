@@ -161,6 +161,7 @@ extension CreateProfileVC: UIImagePickerControllerDelegate,UINavigationControlle
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let selectedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             createUserImage.image = selectedImage
+            UserService.saveUserProfileImage(image: selectedImage)
         }
         picker.dismiss(animated: true, completion: nil)
     }
