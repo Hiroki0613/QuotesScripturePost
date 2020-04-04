@@ -88,6 +88,9 @@ class CreateProfileVC: UIViewController {
     }
     
     
+    //ここでユーザー情報を作成する
+    // TODO: ここに写真を追加。なければプレースホルダーを設定
+    //　ユーザーの写真はURLを統一化して変更できるようにすること
     @objc func createUser() {
         //uidを取得するため、現在のユーザーがログインしているかを確認
         guard let authCurrentUser = Auth.auth().currentUser else {
@@ -160,8 +163,9 @@ extension CreateProfileVC: UIImagePickerControllerDelegate,UINavigationControlle
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let selectedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            //createUserImageへ情報を格納。
+            //@objc func createUser()にて、firebaseへ保存
             createUserImage.image = selectedImage
-            UserService.saveUserProfileImage(image: selectedImage)
         }
         picker.dismiss(animated: true, completion: nil)
     }

@@ -17,7 +17,7 @@ class LocalStorageService {
         defaults.set(user.username, forKey: Constants.LocalStorage.storedUsername)
          }
     
-    static func saveUserProfileImage(user:PhotoUser) {
+    static func saveUserProfileImageShot(user:PhotoUser) {
         let defaults = UserDefaults.standard
         defaults.set(user.userProfilePhotoStorage, forKey: Constants.LocalStorage.sotredUserPhoto)
     }
