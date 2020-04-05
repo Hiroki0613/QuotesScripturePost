@@ -8,6 +8,19 @@
 
 
 //ここで選んだ名言を任意の位置に貼り付けて、問題がなければFireBaseへPostする。
+
+/*
+ RotationGesture
+ https://www.youtube.com/watch?v=FXwuW7nYlFY
+ PinchGesture
+ https://www.youtube.com/watch?v=w1l4SWk5kCE
+ PanGesture
+ https://www.youtube.com/watch?v=beWokMbXoZo
+ を使用する。
+ 
+ ただし、まず最初はUILabelを貼り付けるだけに留めておく
+*/
+
 //そのあとに、dismissをして、投稿画面に戻る
 
 import UIKit
