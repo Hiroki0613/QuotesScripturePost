@@ -106,7 +106,7 @@ class CreateProfileVC: UIViewController {
         
         guard let userImagePhoto = createUserImage.image else { return }
         //ユーザープロフィールを作成する
-        UserService.createUserProfile(userId: authCurrentUser.uid, username: username!,userImagePhoto: userImagePhoto  { (u) in
+        UserService.createUserProfile(userId: authCurrentUser.uid, username: username!,userImagePhoto: userImagePhoto, userProfilePhotoStorage: <#String#>) { (u) in
             //すでにユーザーが作成されているのかを確認する
             if u == nil {
                 print("プロフィール作成でエラーが発生しました")
