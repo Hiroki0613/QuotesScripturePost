@@ -16,7 +16,7 @@ class CreateProfileVC: UIViewController {
     let createUserTextField = QSTextField()
     let createUserProfileButton = QSButton(title: "Select your image profile")
     let createUserButton = QSButton(title: "Create!")
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,7 +68,7 @@ class CreateProfileVC: UIViewController {
             createUserTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
             createUserTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
             createUserTextField.heightAnchor.constraint(equalToConstant: 50),
-                        
+            
             createUserProfileButton.topAnchor.constraint(equalTo: createUserTextField.bottomAnchor, constant: padding),
             createUserProfileButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
             createUserProfileButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
@@ -103,15 +103,17 @@ class CreateProfileVC: UIViewController {
             print("ユーザー名が入力されていません")
             return
         }
+        
+        guard let userImagePhoto = createUserImage.image else { return }
         //ユーザープロフィールを作成する
-        UserService.createUserProfile(userId: authCurrentUser.uid, username: username!) { (u) in
+        UserService.createUserProfile(userId: authCurrentUser.uid, username: username!,userImagePhoto: userImagePhoto  { (u) in
             //すでにユーザーが作成されているのかを確認する
             if u == nil {
                 print("プロフィール作成でエラーが発生しました")
             } else {
                 //ユーザー情報を保存
                 LocalStorageService.saveCurrentUser(user: u!)
-
+                
                 //モーダルで投稿画面に遷移、遷移先は全画面に変更
                 let selectPostImageVC = SelectPostImageVC()
                 selectPostImageVC.modalPresentationStyle = .fullScreen
