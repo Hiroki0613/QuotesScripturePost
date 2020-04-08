@@ -52,6 +52,7 @@ class LoginVC: UIViewController {
         ])
     }
     
+    //規約改定により、Appleアカウントでのログインが必須のためログインUIも変更した方が良さそう・・・
     @objc func loginToPost() {
         
         let authUI = FUIAuth.defaultAuthUI()
