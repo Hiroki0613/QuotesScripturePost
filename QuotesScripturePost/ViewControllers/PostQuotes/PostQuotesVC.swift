@@ -80,8 +80,9 @@ class PostQuotesVC: UIViewController {
        @objc func goToHome() {
            
         //firebaseにカードを投稿して、Home画面に戻る
-        
-        self.presentingViewController?.presentingViewController?.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
+   
+        //Dissmissは、ホーム画面に戻るまで行っている。
+self.presentingViewController?.presentingViewController?.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
         
        }
 
